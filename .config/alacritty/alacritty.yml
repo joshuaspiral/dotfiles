@@ -1,0 +1,41 @@
+---
+# Alacritty config
+# ---
+# See: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+env:
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+
+window:
+  decorations: none
+  padding: { x: 10, y: 10 }
+
+font:
+  # glyph_offset: { x: 0, y: -1 }
+  use_thin_strokes: true
+  size: 15
+  normal: { family: Source Code Pro, style: Regular }
+  bold:   { family: Source Code Pro, style: Regular }
+  italic: { family: Source Code Pro, style: Regular }
+
+cursor:
+  style:
+    shape: Block  # Block, Underline, Beam
+    blinking: Off
+  vi_mode_style: Beam
+  thickness: 0.25
+
+selection:
+  save_to_clipboard: true
+
+mouse:
+  hide_when_typing: true
+
+live_config_reload: true
+  
