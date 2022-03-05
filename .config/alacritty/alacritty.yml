@@ -19,7 +19,7 @@ window:
 font:
   # glyph_offset: { x: 0, y: -1 }
   use_thin_strokes: true
-  size: 15
+  size: 10
   normal: { family: Source Code Pro, style: Regular }
   bold:   { family: Source Code Pro, style: Regular }
   italic: { family: Source Code Pro, style: Regular }

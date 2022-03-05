@@ -1,4 +1,6 @@
 dwmblocks &
 picom --vsync --backend=glx &
-xsetroot -solid "#ffffff" &
+xbindkeys
+setxkbmap -option compose:ralt
+./.fehbg
 exec dwm

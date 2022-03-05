@@ -17,14 +17,12 @@ set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
-" set spell                 " enable spell check (may need to download language package)
+set spell                 " enable spell check (may need to download language package)
 " set noswapfile            " disable creating swap file
 " set backupdir=~/.cache/vim " Directory to store backup files.
 set autoread                                     " reload on external file changes
 set encoding=utf8                                " enable utf8 support set hidden                                       " hide buffers, don't close set mouse=a                                      " enable mouse support
 set wildmenu wildmode=longest:full,full        
-set relativenumber
-set nu rnu
 set termguicolors 
 
 set listchars=eol:¶,trail:•,tab:▸\               " whitespace characters
@@ -43,7 +41,9 @@ nnoremap <leader>d :w !diff % -<CR>|             " show diff
 nnoremap <silent> <leader>i gg=G``<CR>|          " fix indentation
 nnoremap <leader>l :set list! list?<CR>|         " toggle list (special chars)
 nnoremap <leader>n :set invnumber number?<CR>|   " toggle line numbers
-nnoremap <leader>p :set invpaste paste?<CR>|     " toggle paste mode
+nnoremap <leader>p :!python3 % " run file in python<CR>|
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 nnoremap <leader>r :retab<CR>|                   " convert tabs to spaces
 nnoremap <leader>s :source $MYVIMRC<CR>|         " reload .vimrc
 nnoremap <silent> <leader>t :%s/\s\+$//e<CR>|    " trim whitespace
@@ -52,24 +52,23 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+map j gj
+map k gk
 
 call plug#begin('~/.vim/plugged')
 Plug 'rebelot/kanagawa.nvim'
 Plug 'morhetz/gruvbox'
-Plug 'junegunn/seoul256.vim'
-Plug 'dracula/vim'
 
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colo kanagawa
 syntax enable
 set splitright 
 set splitbelow
+
+autocmd BufWritePost *.tex silent! !pdflatex <afile>
