@@ -14,15 +14,16 @@ env:
 
 window:
   decorations: none
-  padding: { x: 10, y: 10 }
+  padding: { x: 2, y: 2 }
+  opacity: 0.85
 
 font:
   # glyph_offset: { x: 0, y: -1 }
   use_thin_strokes: true
-  size: 10
-  normal: { family: Source Code Pro, style: Regular }
-  bold:   { family: Source Code Pro, style: Regular }
-  italic: { family: Source Code Pro, style: Regular }
+  size: 8
+  normal: { family: Iosevka Term, style: Regular }
+  bold:   { family: Iosevka, style: Regular }
+  italic: { family: Iosevka, style: Regular }
 
 cursor:
   style:
