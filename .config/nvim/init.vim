@@ -1,39 +1,46 @@
-set nocompatible            " disable compatibility to old-time vi
-set showmatch               " show matching 
-set ignorecase              " case insensitive 
-set hlsearch                " highlight search 
-set incsearch               " incremental search
-set tabstop=4               " number of columns occupied by a tab 
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
-set shiftwidth=4            " width for autoindents
-set autoindent              " indent a new line the same amount as the line just typed
-set number                  " add line numbers
-set wildmode=longest,list   " get bash-like tab completions
-filetype plugin indent on   "allow auto-indenting depending on file type
-syntax on                   " syntax highlighting
-set mouse=a                 " enable mouse click
-set clipboard=unnamedplus   " using system clipboard
-filetype plugin on
-set cursorline              " highlight current cursorline
-set ttyfast                 " Speed up scrolling in Vim
-set spell                 " enable spell check (may need to download language package)
-" set noswapfile            " disable creating swap file
-" set backupdir=~/.cache/vim " Directory to store backup files.
-set autoread                                     " reload on external file changes
-set encoding=utf8                                " enable utf8 support set hidden                                       " hide buffers, don't close set mouse=a                                      " enable mouse support
-set wildmenu wildmode=longest:full,full        
-set termguicolors 
+set exrc
+set guicursor=
+set relativenumber
+set nu
+set nohlsearch
+set hidden
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set termguicolors
+set scrolloff=8
+set noshowmode
+set completeopt=menuone,noinsert,noselect
+set signcolumn=yes
+set nowrap
+set cmdheight=2
+set showmatch
+set ignorecase
+set ttyfast
+set spell
+set encoding=utf8
 
-set listchars=eol:¶,trail:•,tab:▸\               " whitespace characters
-set scrolloff=999                                " center cursor position vertically
-set showbreak=¬\                                 " Wrapping character
-set showmatch                                    " show matching brackets
-set lazyredraw                                   " enable lazyredraw
+filetype plugin indent on
+syntax on
 
-let mapleader=','                                " leader key
-
+let mapleader = " "
 inoremap jh <Esc>
+inoremap jk <Esc>
+inoremap kl <Esc>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({search = vim.fn.input("grep for: ")})<C
 nnoremap <leader>, :let @/=''<CR>:noh<CR>|       " clear search
 noremap <leader># :g/\v^(#\|$)/d_<CR>|          " delete commented/blank lines
 nnoremap <leader>b :ls<CR>:buffer<space>|        " show/select buffer
@@ -54,21 +61,25 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 map j gj
 map k gk
+map $ g$
+map 0 g0
 
 call plug#begin('~/.vim/plugged')
-Plug 'rebelot/kanagawa.nvim'
-Plug 'morhetz/gruvbox'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sharkdp/fd'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'BurntSushi/ripgrep'
+
+Plug 'gruvbox-community/gruvbox'
 
 Plug 'tpope/vim-commentary'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-colo kanagawa
-syntax enable
-set splitright 
-set splitbelow
+colo gruvbox
+highlight Normal guibg=none
 
 autocmd BufWritePost *.tex silent! !pdflatex <afile>
