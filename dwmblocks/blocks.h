@@ -7,7 +7,7 @@ static const Block blocks[] = {
 
 	{"STATUS: ", "acpi | awk '{ print $3 }' | tr -d ','",                 30,		0},
 
-	{"VOL: ", "/home/joshua/.dwmblocks/scripts/volume.sh",					                            1,		0},
+	{"VOL: ", "./scripts/volume.sh",					                            1,		0},
 
 	{"", "date '+%b %d (%a) %H:%M:%S'",				                    	      1,		0},
 };
