@@ -17,4 +17,4 @@ bindkey "^[[1;5D" backward-word
 # Exports
 export EDITOR=nvim
 export PATH=/home/joshua/.cargo/bin/:$PATH
-# theme.sh google-dark
+theme.sh gruvbox-dark
