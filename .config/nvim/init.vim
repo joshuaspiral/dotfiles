@@ -20,7 +20,6 @@ set noshowmode
 set completeopt=menuone,noinsert,noselect
 set signcolumn=yes
 set nowrap
-set cmdheight=2
 set showmatch
 set ignorecase
 set ttyfast
@@ -39,7 +38,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({search = vim.fn.input("grep for: ")})<C>
 nnoremap <leader>  :let @/=''<CR>:noh<CR>|       " clear search
 nnoremap <leader>b :ls<CR>:buffer<space>|        " show/select buffer
 nnoremap <leader>d :w !diff % -<CR>|             " show diff
@@ -52,6 +50,7 @@ nnoremap <silent> <leader>t :%s/\s\+$//e<CR>|    " trim whitespace
 nnoremap <leader>w :set wrap! wrap?<CR>|         " toggle wrapping
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -86,6 +85,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim'
+Plug 'mbbill/undotree'
 call plug#end()
 
 colo gruvbox
