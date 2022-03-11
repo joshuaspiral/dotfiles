@@ -22,19 +22,24 @@ curl -Lo /usr/bin/theme.sh 'https://git.io/JM70M' && chmod +x /usr/bin/theme.sh
 
 # Copying dotfiles
 cp -R .config $home_dir/
+chown joshua $home_dir/.config
 rm -rf $home_dir/.src/
 cp -R src $home_dir/.src/
+chown joshua $home_dir/.src
 cp .zshrc .xinitrc .xbindkeysrc .fehbg $home_dir/
 cp -R scripts $home_dir/.scripts/
 
 # Installing dmenu, dwm, dwmblocks
 cd $home_dir/.src/dwm
+chown joshua $home_dir/.src/dwm
 make clean install
 
 cd $home_dir/.src/dwmblocks
+chown joshua $home_dir/.src/dwmblocks
 make clean install
 
 cd $home_dir/.src/dmenu
+chown joshua $home_dir/.src/dmenu
 make clean install
 
 # Installing vim-plug for neovim
