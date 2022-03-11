@@ -5,6 +5,9 @@ read -e user
 home_dir="/home/$user"
 echo $home_dir
 
+# Copying doas.conf
+cp doas.conf /etc/doas.conf
+
 set -e
 # Installing X and X apps
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
