@@ -22,6 +22,7 @@ curl -Lo /usr/bin/theme.sh 'https://git.io/JM70M' && chmod +x /usr/bin/theme.sh
 
 # Copying dotfiles
 cp -R .config $home_dir/
+rm -rf $home_dir/.src/
 cp -R src $home_dir/.src/
 cp .zshrc .xinitrc .xbindkeysrc .fehbg $home_dir/
 cp -R scripts $home_dir/.scripts/
@@ -41,3 +42,4 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo "Run paru.sh as user"
+cd $home_dir
