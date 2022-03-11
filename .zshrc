@@ -7,8 +7,8 @@ alias zathura="zathura --fork"
 alias ls="exa --git"
 alias p="doas pacman"
 alias v="nvim"
-alias icat="kitty +kitten icat"
-alias od="fzf | xargs nvim"
+alias nv="fzf | xargs nvim"
+alias dmkci="doas make clean install"
 
 # Ctrl left + Ctrl right movements
 bindkey "^[[1;5C" forward-word
