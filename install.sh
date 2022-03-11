@@ -8,6 +8,9 @@ echo $home_dir
 # Copying doas.conf
 cp doas.conf /etc/doas.conf
 
+# Copying bashrc
+cp .bashrc $home_dir/
+
 set -e
 # Installing X and X apps
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
