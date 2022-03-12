@@ -53,9 +53,6 @@ cd $home_dir/.src/dmenu
 chown joshua $home_dir/.src/dmenu
 make clean install
 
-# Installing vim-plug for neovim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo "Run paru.sh as user"
 cd $home_dir
