@@ -8,6 +8,9 @@ echo $home_dir
 # Copying doas.conf
 cp doas.conf /etc/doas.conf
 
+# Copying pacman.conf
+cp pacman.conf /etc/pacman.conf
+
 # Copying bashrc
 cp .bashrc $home_dir/
 
@@ -16,7 +19,7 @@ set -e
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
 
 # Installing other programs
-pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty
+pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim
 
 # Installing doas
 pacman -S doas
