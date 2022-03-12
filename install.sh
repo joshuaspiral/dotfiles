@@ -5,6 +5,8 @@ read -e user
 home_dir="/home/$user"
 echo $home_dir
 
+pacman -S artix-archlinux-support
+pacman -Syyu
 # Copying doas.conf
 cp doas.conf /etc/doas.conf
 
@@ -19,7 +21,7 @@ set -e
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
 
 # Installing other programs
-pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf
+pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf exa nodejs github-cli ranger thunar xclip maim
 
 # Installing doas
 pacman -S doas
