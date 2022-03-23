@@ -32,7 +32,6 @@ syntax on
 let mapleader = " "
 inoremap jh <Esc>
 inoremap jk <Esc>
-inoremap kl <Esc>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true<cr>
@@ -48,9 +47,7 @@ nnoremap <leader>  :let @/=''<CR>:noh<CR>|       " clear search
 nnoremap <leader>b :ls<CR>:buffer<space>|        " show/select buffer
 nnoremap <leader>d :w !diff % -<CR>|             " show diff
 nnoremap <silent> <leader>i gg=G``<CR>|          " fix indentation
-nnoremap <leader>l :set list! list?<CR>|         " toggle list (special chars)
 nnoremap <leader>r :retab<CR>|                   " convert tabs to spaces
-nnoremap <silent> <leader>t :%s/\s\+$//e<CR>|    " trim whitespace
 nnoremap <leader>w :set wrap! wrap?<CR>|         " toggle wrapping
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
@@ -61,8 +58,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 map j gj
 map k gk
-map $ g$
-map 0 g0
 
 nnoremap Y yg$
 nnoremap n nzzzv
@@ -75,6 +70,9 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nmap <leader>Y "+Y
 
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -84,15 +82,18 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'BurntSushi/ripgrep'
 
 Plug 'gruvbox-community/gruvbox'
+Plug 'rebelot/kanagawa.nvim'
+
 Plug 'ambv/black'
+Plug 'sbdchd/neoformat'
 
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'lilydjwg/colorizer'
-Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim'
 Plug 'mbbill/undotree'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 colo gruvbox
@@ -102,4 +103,11 @@ highlight Normal guibg=none
 autocmd BufWritePost *.tex silent! !pdflatex <afile>
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd BufWritePre *.py execute ':Black'
+" autocmd BufWritePre *.py execute ':Black'
+
+let g:neoformat_basic_format_retab = 1
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat 
+
+" augroup END
