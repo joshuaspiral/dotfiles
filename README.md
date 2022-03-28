@@ -2,4 +2,4 @@
 Personal dotfiles 
 
 # Description
-Currently for Artix Linux but it should work for most distributions too :]
+For Artix Linux but everything but the scripts should work for most distributions too :]
