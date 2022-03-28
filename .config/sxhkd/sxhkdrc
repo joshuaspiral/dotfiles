@@ -1,0 +1,4 @@
+alt + r
+    setxkbmap us
+alt + c
+    setxkbmap us -variant colemak
