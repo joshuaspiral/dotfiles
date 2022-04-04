@@ -6,8 +6,8 @@ static const unsigned int gappx     = 5;        /* gap pixel between windows */
 static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:style=Regular:size=10" };
-static const char dmenufont[]       = "Iosevka:size=10";
+static const char *fonts[]          = { "Iosevka:style=Regular:size=15" };
+static const char dmenufont[]       = "Iosevka:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -64,27 +64,22 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
     /* custom mappings              key        function        argument */
-    { MODKEY,                       XK_c,      spawn,          SHCMD("firefox") },
+    { MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
     { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
     { MODKEY,             XK_q,      spawn,          SHCMD("maim ~/Pictures/Screenshots/$(date +%s).png")},
-    {MODKEY,                        XK_w,      spawn,          SHCMD("alacritty -e weechat")},
-    {MODKEY,                        XK_n,      spawn,          SHCMD("alacritty -e nvim")},
-    {MODKEY,                        XK_s,      spawn,          SHCMD("alacritty -e spt")},
-    {MODKEY,                        XK_r,      spawn,          SHCMD("alacritty -e ranger")},
-    {MODKEY,                        XK_e,      spawn,          SHCMD("alacritty -e thunar")},
 
 
 	/* modifier                     key        function        argument */
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	/* { MODKEY,                       XK_b,      togglebar,      {0} }, */
+	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_i,      focusstack,     {.i = -1 } },
+	/* { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } }, */
+	/* { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } }, */
+	{ MODKEY,                       XK_n,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_o,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },

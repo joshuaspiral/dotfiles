@@ -46,7 +46,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <leader>  :let @/=''<CR>:noh<CR>|       " clear search
 nnoremap <leader>b :ls<CR>:buffer<space>|        " show/select buffer
 nnoremap <leader>d :w !diff % -<CR>|             " show diff
-nnoremap <silent> <leader>i gg=G``<CR>|          " fix indentation
 nnoremap <leader>r :retab<CR>|                   " convert tabs to spaces
 nnoremap <leader>w :set wrap! wrap?<CR>|         " toggle wrapping
 nnoremap <Leader>+ :vertical resize +5<CR>
@@ -95,8 +94,6 @@ Plug 'neoclide/coc.nvim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf.vim'
 
-Plug 'jooize/vim-colemak'
-" Colemak :D
 
 call plug#end()
 
@@ -113,7 +110,8 @@ let g:neoformat_basic_format_retab = 1
 " augroup fmt
 "   autocmd!
 "   autocmd BufWritePre * undojoin | Neoformat 
-
+"
+"
 noremap d g
 noremap e k
 noremap f e
