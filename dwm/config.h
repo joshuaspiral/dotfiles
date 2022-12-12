@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;       /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gap pixel between windows */
+static const unsigned int gappx     = 20;        /* gap pixel between windows */
 static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:style=Regular:size=15" };
-static const char dmenufont[]       = "Iosevka:size=15";
+static const char *fonts[]          = { "Source Code Pro:style=Regular:size=15" };
+static const char dmenufont[]       = "Source Code Pro:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -64,7 +64,8 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
     /* custom mappings              key        function        argument */
-    { MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
+    { MODKEY,                       XK_c,      spawn,          SHCMD("firefox") },
+    { MODKEY,                       XK_r,      spawn,          SHCMD("alacritty -e ranger") },
     { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
     { MODKEY,             XK_q,      spawn,          SHCMD("maim ~/Pictures/Screenshots/$(date +%s).png")},
 
@@ -74,8 +75,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	/* { MODKEY,                       XK_b,      togglebar,      {0} }, */
-	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_i,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	/* { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } }, */
 	/* { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } }, */
 	{ MODKEY,                       XK_n,      setmfact,       {.f = -0.05} },
