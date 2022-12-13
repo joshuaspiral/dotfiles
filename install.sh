@@ -1,5 +1,7 @@
 #!/bin/sh
-echo "[universe]\nServer = https://universe.artixlinux.org/$arch" >> /etc/pacman.conf
+echo "[universe]
+Server = https://universe.artixlinux.org/\$arch" >> /etc/pacman.conf
+pacman -Sy
 pacman -S artix-archlinux-support
 echo "# Arch
 [extra]
@@ -20,7 +22,7 @@ set -e
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
 
 # Installing other programs
-pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf exa nodejs github-cli ranger thunar xclip maim sxhkd adobe-source-code-pro-fonts
+pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf exa nodejs github-cli ranger thunar xclip maim sxhkd adobe-source-code-pro-fonts ttc-iosevka acpi pamixer yarn noto-fonts-cjk arc-gtk-theme
 
 # Installing doas
 pacman -S doas

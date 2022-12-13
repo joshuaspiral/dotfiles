@@ -18,7 +18,6 @@ window:
 
 font:
   # glyph_offset: { x: 0, y: -1 }
-  use_thin_strokes: true
   size: 15
   normal: { family: Iosevka Term, style: Regular }
   bold:   { family: Iosevka, style: Bold }
