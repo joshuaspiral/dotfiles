@@ -31,7 +31,6 @@ syntax on
 
 let mapleader = " "
 inoremap jh <Esc>
-inoremap jk <Esc>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true<cr>
@@ -72,6 +71,13 @@ nmap <leader>Y "+Y
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -112,35 +118,4 @@ let g:neoformat_basic_format_retab = 1
 "   autocmd BufWritePre * undojoin | Neoformat 
 "
 "
-noremap d g
-noremap e k
-noremap f e
-noremap g t
-noremap i l
-noremap j y
-noremap k n
-noremap l u
-noremap n j
-noremap o p
-noremap p r
-noremap r s
-noremap s d
-noremap t f
-noremap u i
-noremap y o
-noremap D G
-noremap E K
-noremap F E
-noremap G T
-noremap I L
-noremap J Y
-noremap K N
-noremap L U
-noremap N J
-noremap O P
-noremap P R
-noremap R S
-noremap S D
-noremap T F
-noremap U I
-noremap Y O
+"
