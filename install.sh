@@ -22,7 +22,7 @@ set -e
 pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot libxinerama libx11 libxft
 
 # Installing other programs
-pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf exa nodejs github-cli ranger thunar xclip maim sxhkd adobe-source-code-pro-fonts ttc-iosevka acpi pamixer yarn noto-fonts-cjk arc-gtk-theme
+pacman -S feh mpv sxiv qbittorrent zathura zathura-pdf-mupdf pulseaudio pulseaudio-alsa clang cronie-runit net-tools lxappearance picom playerctl dunst xbindkeys zsh alacritty python-pynvim fzf exa nodejs github-cli ranger thunar xclip maim sxhkd adobe-source-code-pro-fonts ttc-iosevka ttc-cascadia-code acpi pamixer yarn noto-fonts-cjk arc-gtk-theme
 
 # Installing doas
 pacman -S doas
