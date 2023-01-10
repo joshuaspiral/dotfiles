@@ -20,8 +20,8 @@ font:
   # glyph_offset: { x: 0, y: -1 }
   size: 10
   normal: { family: Cascadia Code, style: Regular }
-  bold:   { family: Source Code Pro, style: Bold }
-  italic: { family: Source Code Pro, style: Bold }
+  bold:   { family: Cascadia Code, style: Bold }
+  italic: { family: Cascadia Code, style: Italic }
 
 cursor:
   style:

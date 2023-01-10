@@ -31,6 +31,7 @@ syntax on
 
 let mapleader = " "
 inoremap jh <Esc>
+inoremap jk <Esc>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fh <cmd>Telescope find_files hidden=true<cr>
@@ -71,13 +72,6 @@ nmap <leader>Y "+Y
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -108,8 +102,8 @@ highlight Normal guibg=none
 
 " Autocmds
 autocmd BufWritePost *.tex silent! !pdflatex <afile>
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <C-l> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <C-l> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 " autocmd BufWritePre *.py execute ':Black'
 
 let g:neoformat_basic_format_retab = 1
@@ -118,7 +112,3 @@ let g:neoformat_basic_format_retab = 1
 "   autocmd BufWritePre * undojoin | Neoformat 
 "
 "
-<<<<<<< HEAD
-"
-=======
->>>>>>> f3dd57c (nvim fix)
