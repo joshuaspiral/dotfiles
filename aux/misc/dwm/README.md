@@ -1,4 +1,0 @@
-# dwm
-# dwm
-# dwm
-# dwm
