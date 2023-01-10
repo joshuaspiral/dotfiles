@@ -10,3 +10,4 @@ Install GNU Stow
 doas pacman -S stow
 ```
 
+To `stow` dotfiles, use `stow */`
