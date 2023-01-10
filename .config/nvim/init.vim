@@ -118,4 +118,7 @@ let g:neoformat_basic_format_retab = 1
 "   autocmd BufWritePre * undojoin | Neoformat 
 "
 "
+<<<<<<< HEAD
 "
+=======
+>>>>>>> f3dd57c (nvim fix)
