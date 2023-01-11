@@ -97,7 +97,7 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-colo gruvbox
+colo kanagawa
 highlight Normal guibg=none
 
 " Autocmds
