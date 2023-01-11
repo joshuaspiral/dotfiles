@@ -79,16 +79,16 @@
 
 # Increase volume
 "pactl set-sink-volume @DEFAULT_SINK@ +1000"
-   XF86AudioRaiseVolume
+   Control+Shift+Alt + equal
 
 # Decrease volume
 "pactl set-sink-volume @DEFAULT_SINK@ -1000"
-   XF86AudioLowerVolume
+   Control+Shift+Alt + minus
 
 # Mute volume
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-   XF86AudioMute
+   Control+Shift+Alt + v
 
 # Mute microphone
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-   XF86AudioMicMute
+   Control+Shift+Alt + m
