@@ -1,0 +1,22 @@
+[user]
+	email = najoshua.yeung@gmail.com
+	name = Joshua Yeung
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[alias]
+	st = status
+    ci = commit
+    co = checkout
+    cl = clone
+    ps = push
+    pl = pull
