@@ -2,21 +2,23 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;       /* border pixel of windows */
-static const unsigned int gappx     = 20;        /* gap pixel between windows */
+static const unsigned int gappx     = 10;        /* gap pixel between windows */
 static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Cascadia Code:style=Regular:size=15" };
-static const char dmenufont[]       = "Cascadia Code:size=15";
+static const char *fonts[]          = { 
+	"Iosevka:size=10", 
+	"JoyPixels:pixelsize=10:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Iosevka:style=Regular:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_cyan[]        = "#719586";
-static const char col_black[]        = "#1d2021";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
-	/*               fg(text)         bg(behind text)         border   */
+	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_cyan, col_gray1,  col_black },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
 /* tagging */
@@ -63,18 +65,18 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
-    /* custom mappings              key        function        argument */
-    { MODKEY,                       XK_c,      spawn,          SHCMD("firefox") },
-    { MODKEY,                       XK_r,      spawn,          SHCMD("alacritty -e ranger") },
-    { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
-    { MODKEY,             XK_q,      spawn,          SHCMD("maim ~/Pictures/Screenshots/$(date +%s).png")},
+  /* custom mappings              key        function        argument */
+  { MODKEY,                       XK_c,      spawn,          SHCMD("firefox") },
+  { MODKEY,                       XK_r,      spawn,          SHCMD("alacritty -e ranger") },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
+  { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("maim -s ~/Media/Screenshots/$(date +%s).png")},
 
 
 	/* modifier                     key        function        argument */
-    { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-    { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
+  { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+  { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	/* { MODKEY,                       XK_b,      togglebar,      {0} }, */
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

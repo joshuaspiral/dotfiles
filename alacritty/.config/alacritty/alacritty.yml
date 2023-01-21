@@ -13,15 +13,15 @@ env:
 
 window:
   decorations: none
-  padding: { x: 2, y: 2 }
+  padding: { x: 5, y: 5 }
   opacity: 0.8
 
 font:
   # glyph_offset: { x: 0, y: -1 }
   size: 10
-  normal: { family: Cascadia Code, style: Regular }
-  bold:   { family: Cascadia Code, style: Bold }
-  italic: { family: Cascadia Code, style: Italic }
+  normal: { family: Iosevka Term, style: Regular }
+  bold:   { family: Iosevka Term, style: Bold }
+  italic: { family: Iosevka Term, style: Italic }
 
 cursor:
   style:
