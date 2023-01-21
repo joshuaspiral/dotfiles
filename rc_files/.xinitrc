@@ -1,8 +1,8 @@
 picom --vsync --backend=glx &
-xbindkeys
+xbindkeys &
 setxkbmap -option compose:ralt
-/* doas brightnessctl s 30% */
 ./.fehbg
 dwmblocks &
 sxhkd &
+syndaemon -K -i 0.01 -R -d
 exec dwm

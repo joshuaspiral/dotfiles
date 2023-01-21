@@ -1,2 +1,2 @@
-# dwm
+# dmenu
 [modified by joshuaspiral]
