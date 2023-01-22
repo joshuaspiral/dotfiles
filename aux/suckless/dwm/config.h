@@ -7,9 +7,9 @@ static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-	"Iosevka:size=10", 
+	"Iosevka Term SS04:style=Light:size=15",
 	"JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Iosevka:style=Regular:size=10";
+static const char dmenufont[]       = "Iosevka Term SS04:style=Light:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -69,7 +69,7 @@ static Key keys[] = {
   { MODKEY,                       XK_c,      spawn,          SHCMD("firefox") },
   { MODKEY,                       XK_r,      spawn,          SHCMD("alacritty -e ranger") },
   { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
-  { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("maim -s ~/Media/Screenshots/$(date +%s).png")},
+  { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("maim -s ~/Media/Screenshots/$(date +%c).png")},
 
 
 	/* modifier                     key        function        argument */
