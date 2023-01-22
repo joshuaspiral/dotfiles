@@ -18,5 +18,6 @@ bindkey "^[[1;5D" backward-word
 
 # Exports
 export EDITOR=nvim
-export PATH=/home/joshua/.cargo/bin/:$PATH
+export PATH=/$HOME/.cargo/bin/:$PATH
+export PATH=/$HOME/.emacs.d/bin:$PATH
 theme.sh ibm3270

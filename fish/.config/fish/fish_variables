@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export TOKEN:MTA2NDg1MzM0NjY0Njc2MTQ3Mw\x2eG1pa03\x2erDLMzG\x2dzcM5a_sbGsvzkfEyUt2rz_Fw6xY3oas
 SETUVAR Z_DATA_DIR:/home/joshua/\x2elocal/share/z
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
@@ -32,4 +33,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:\x2eemacs\x2ed/bin/\x1e/home/joshua/\x2ecargo/bin
+SETUVAR fish_user_paths:/home/joshua/\x2eemacs\x2ed/bin
