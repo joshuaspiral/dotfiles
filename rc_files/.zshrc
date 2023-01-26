@@ -1,6 +1,5 @@
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-# Nice prompt :)
 
 # Aliases
 alias zathura="zathura --fork"
@@ -20,4 +19,3 @@ bindkey "^[[1;5D" backward-word
 export EDITOR=nvim
 export PATH=/$HOME/.cargo/bin/:$PATH
 export PATH=/$HOME/.emacs.d/bin:$PATH
-theme.sh ibm3270

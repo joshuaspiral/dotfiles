@@ -18,9 +18,9 @@ window:
 
 font:
   size: 15
-  normal: { family: Iosevka Term SS04, style: Light }
-  bold:   { family: Iosevka Term SS04, style: Bold }
-  italic: { family: Iosevka Term SS04, style: Italic }
+  normal: { family: Iosevka Term SS14, style: Light }
+  bold:   { family: Iosevka Term SS14, style: Bold }
+  italic: { family: Iosevka Term SS14, style: Italic }
 
 cursor:
   style:
