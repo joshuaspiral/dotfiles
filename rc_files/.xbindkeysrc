@@ -66,32 +66,32 @@
 #  Control + b:2 + Release
 
 # Increase brightness
-# "doas light -A 5"
-#  XF86MonBrightnessUp
+"doas light -A 5"
+ XF86MonBrightnessUp
 
 # Decrease brightness
-# "doas light -U 5"
-#  XF86MonBrightnessDown
+"doas light -U 5"
+ XF86MonBrightnessDown
 
 # Increase volume
 "pactl set-sink-volume @DEFAULT_SINK@ +1000"
- Control+Shift+Alt + equal
- # XF86AudioRaiseVolume
+ XF86AudioRaiseVolume
+ # Control+Shift+Alt + equal
 
 # Decrease volume
 "pactl set-sink-volume @DEFAULT_SINK@ -1000"
- Control+Shift+Alt + minus
- # XF86AudioLowerVolume
+ XF86AudioLowerVolume
+ # Control+Shift+Alt + minus
 
 # Mute volume
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
- Control+Shift+Alt + v
- # XF86AudioMute
+ XF86AudioMute
+ # Control+Shift+Alt + v
 
 # Mute microphone
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
- Control+Shift+Alt + m
- # XF86AudioMicMute
+ XF86AudioMicMute
+ # Control+Shift+Alt + m
 
 ##################################
 # End of xbindkeys configuration #

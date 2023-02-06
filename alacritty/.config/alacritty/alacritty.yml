@@ -17,7 +17,7 @@ window:
   opacity: 0.8
 
 font:
-  size: 15
+  size: 10
   normal: { family: Iosevka Term SS14, style: Light }
   bold:   { family: Iosevka Term SS14, style: Bold }
   italic: { family: Iosevka Term SS14, style: Italic }
