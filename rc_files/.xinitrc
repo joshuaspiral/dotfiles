@@ -6,4 +6,5 @@ setxkbmap -option compose:ralt
 dwmblocks &
 sxhkd &
 syndaemon -K -i 0.01 -R -d
+setxkbmap -option ctrl:nocaps
 exec dwm
