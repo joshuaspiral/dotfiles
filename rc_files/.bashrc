@@ -8,3 +8,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
+
+export EDITOR="nvim"
+export VISUAL="nvim" 
