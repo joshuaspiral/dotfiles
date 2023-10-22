@@ -1,0 +1,29 @@
+# Take screenshot and copy to clipboard
+super + shift + s
+	maim -s -u | xclip -selection clipboard -t image/png -i
+
+super + r
+	alacritty -e "ranger"
+
+super + c
+	firefox
+
+# Decrease volume
+XF86AudioLowerVolume
+	pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks
+
+# Increase volume
+XF86AudioRaiseVolume
+	pamixer --increase 5 && pkill -RTMIN+10 dwmblocks
+
+# Mute volume
+XF86AudioMute
+	pamixer -t && pkill -RTMIN+10 dwmblocks
+
+# Decrease brightness
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
+# Increase brightness
+XF86MonBrightnessUp
+	xbacklight -inc 10

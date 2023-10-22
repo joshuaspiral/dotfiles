@@ -1,0 +1,38 @@
+# Alacritty config
+# ---
+# See: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+env:
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+
+window:
+  decorations: none
+  padding: { x: 5, y: 5 }
+  opacity: 0.8
+
+font:
+  size: 10
+  normal: { family: Iosevka Nerd Font, style: Light }
+  bold:   { family: Iosevka Nerd Font, style: Bold }
+  italic: { family: Iosevka Nerd Font, style: Italic }
+
+cursor:
+  style:
+    shape: Block  # Block, Underline, Beam
+    blinking: Off
+  vi_mode_style: Beam
+  thickness: 0.25
+
+selection:
+  save_to_clipboard: true
+
+mouse:
+  hide_when_typing: true
+
+live_config_reload: true
