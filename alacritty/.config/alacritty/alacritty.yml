@@ -38,4 +38,4 @@ mouse:
 live_config_reload: true
 
 import:
- - ~/.config/alacritty/themes/themes/gruvbox_dark.yaml
+ - ~/.config/alacritty/gruvbox_dark.yaml
