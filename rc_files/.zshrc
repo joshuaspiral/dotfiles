@@ -19,6 +19,8 @@ bindkey "^[[1;5D" backward-word
 
 # Exports
 export EDITOR=nvim
+export BROWSER=firefox
+export MOZ_DBUS_REMOTE=1
 path+=('/home/joshua/idea-IC-232.9921.47/bin/')
 export PATH
 eval "$(zoxide init zsh)"
