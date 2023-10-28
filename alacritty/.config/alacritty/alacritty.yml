@@ -3,7 +3,7 @@
 # See: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
 shell:
-  program: /bin/fish
+  program: /bin/zsh
   args:
     - --login
 
@@ -17,11 +17,11 @@ window:
   opacity: 0.7
 
 font:
-  size: 10
+  size: 12
   # size: 15
-  normal: { family: Roboto Mono Nerd Font, style: Regular }
-  bold:   { family: Roboto Mono Nerd Font, style: Bold }
-  italic: { family: Roboto Mono Nerd Font, style: Italic }
+  normal: { family: Iosevka Nerd Font, style: Regular }
+  bold:   { family: Iosevka Nerd Font, style: Bold }
+  italic: { family: Iosevka Nerd Font, style: Italic }
 
 cursor:
   style:
