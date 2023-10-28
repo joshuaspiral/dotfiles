@@ -16,6 +16,7 @@ alias texreload='latexmk -pdf -pvc'
 # Ctrl left + Ctrl right movements
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey -e
 
 # Exports
 export EDITOR=nvim
