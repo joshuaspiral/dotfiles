@@ -9,7 +9,7 @@ base
 base-devel
 bat
 brightnessctl
-chromium
+ungoogled-chromium
 cmake
 cmatrix
 dhcpcd-runit
