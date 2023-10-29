@@ -1,1 +1,0 @@
-The files in this folder are blank so that you can add your own css. The default css added for each screen by the add-on is located 2 folder levels back in the "web" folder
