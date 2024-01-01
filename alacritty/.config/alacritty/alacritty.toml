@@ -1,0 +1,47 @@
+import = ["/home/joshua/.config/alacritty/gruvbox_dark.toml"]
+live_config_reload = true
+
+[cursor]
+thickness = 0.25
+vi_mode_style = "Beam"
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[env]
+LANG = "en_US.UTF-8"
+LC_ALL = "en_US.UTF-8"
+
+[font]
+size = 12
+
+[font.bold]
+family = "Iosevka"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+args = ["--login"]
+program = "/bin/fish"
+
+[window]
+decorations = "none"
+opacity = 0.7
+
+[window.padding]
+x = 15
+y = 15
