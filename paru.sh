@@ -5,4 +5,4 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
-paru -S zoom discord anki
+paru -S zoom discord anki-bin spotify-tui
