@@ -5,6 +5,9 @@ super + shift + s
 super + r
 	alacritty -e "ranger"
 
+super + e
+	thunar
+
 super + c
 	firefox
 
