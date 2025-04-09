@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
-pacman -S - < pkglist.txt
+pacman -S - < pkglist_laptop.txt
 
 echo "Run paru.sh as user"

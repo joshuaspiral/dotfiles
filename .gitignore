@@ -1,3 +1,5 @@
 **/*.o
 dist/
 paru/
+aux/suckless/dmenu/dmenu
+aux/suckless/dmenu/stest
