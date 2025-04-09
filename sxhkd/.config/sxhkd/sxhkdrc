@@ -9,7 +9,10 @@ super + e
 	thunar
 
 super + c
-	firefox
+	chromium
+
+super + shift + p
+	rofi -show drun
 
 # Decrease volume
 XF86AudioLowerVolume
@@ -25,8 +28,8 @@ XF86AudioMute
 
 # Decrease brightness
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	doas brightnessctl set 10%-
 
 # Increase brightness
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	doas brightnessctl set 10%+

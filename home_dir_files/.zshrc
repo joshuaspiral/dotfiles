@@ -26,3 +26,7 @@ path+=('/home/joshua/idea-IC-232.9921.47/bin/')
 path+=('/home/joshua/.cargo/bin')
 export PATH
 eval "$(zoxide init zsh)"
+
+# Created by `pipx` on 2024-10-16 02:42:07
+export PATH="$PATH:/home/joshua/.local/bin"
+. "$HOME/.cargo/env"
