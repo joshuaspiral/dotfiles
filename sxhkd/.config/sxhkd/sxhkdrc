@@ -9,18 +9,18 @@ super + e
 	thunar
 
 super + c
-	chromium
+	firefox
 
-super + shift + p
-	rofi -show drun
+super + o
+	obsidian
 
 # Decrease volume
 XF86AudioLowerVolume
-	pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks
+	pamixer --allow-boost --decrease 5 && pkill -RTMIN+10 dwmblocks
 
 # Increase volume
 XF86AudioRaiseVolume
-	pamixer --increase 5 && pkill -RTMIN+10 dwmblocks
+	pamixer --allow-boost --increase 5 && pkill -RTMIN+10 dwmblocks
 
 # Mute volume
 XF86AudioMute
