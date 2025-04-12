@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # Installing paru
-git clone https://aur.archlinux.org/paru.git
-cd paru
+mkdir ~/aux
+cd ~/aux
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
 makepkg -si
 
-paru -S zoom discord anki-bin spotify-tui
+paru -S zoom anki-bin spotify-tui mullvad-vpn-runit mullvad-vpn
