@@ -33,7 +33,7 @@ save_to_clipboard = true
 
 [window]
 decorations = "none"
-opacity = 0.7
+# opacity = 1.0
 
 [window.padding]
 x = 15
@@ -41,6 +41,13 @@ y = 15
 
 [general]
 live_config_reload = true
+import = [
+  # uncomment the flavour you want below:
+#  "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+"~/.config/alacritty/catppuccin-mocha.toml"
+]
 
 [terminal]
 [terminal.shell]
