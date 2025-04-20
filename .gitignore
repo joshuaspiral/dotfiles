@@ -1,5 +1,6 @@
 **/*.o
 dist/
-paru/
+paru-bin/
+aux/suckless/dwm/dwm
 aux/suckless/dmenu/dmenu
-aux/suckless/dmenu/stest
+aux/suckless/dwmblocks/dwmblocks
