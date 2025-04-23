@@ -13,4 +13,4 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 fcitx5 -d &
 syncthing &
-exec dwm
+dbus-launch --sh-syntax --exit-with-session dwm
