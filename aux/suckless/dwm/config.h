@@ -2,7 +2,7 @@
 #define TERMINAL "alacritty"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 10;        /* border pixel of windows */
 static const unsigned int gappx      = 15;       /* gap pixel */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
