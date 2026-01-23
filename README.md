@@ -10,7 +10,7 @@ my dotfiles for artix + kde plasma
 
 ## setup
 ```sh
-git clone https://github.com/yourusername/dotfiles.git
+git clone https://github.com/joshuaspiral/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
