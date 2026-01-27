@@ -64,6 +64,43 @@ if [ -d "$DOTFILES_DIR/config/kde" ]; then
     done
 fi
 
+link_system_config() {
+    local filename=$1
+    local source_path="$DOTFILES_DIR/etc/$filename"
+    local target_path="/etc/$filename"
+
+    echo "Processing system config $filename..."
+
+    # Check if target is already correct
+    if [ -L "$target_path" ]; then
+        local current_link=$(readlink -f "$target_path")
+        if [ "$current_link" == "$source_path" ]; then
+             echo "  -> Already linked correctly."
+             return
+        fi
+    fi
+
+    echo "  -> Symlinking $source_path to $target_path (requires sudo)"
+
+    # Backup if exists (and not a symlink to our file, which we checked above)
+    if [ -e "$target_path" ]; then
+         echo "  -> Backing up existing $target_path to $BACKUP_DIR/"
+         sudo mkdir -p "$BACKUP_DIR"
+         sudo mv "$target_path" "$BACKUP_DIR/"
+    fi
+    
+    sudo ln -sf "$source_path" "$target_path"
+}
+
+# Link system configuration files
+if [ -d "$DOTFILES_DIR/etc" ]; then
+    echo "Setting up system configurations..."
+    for file in "$DOTFILES_DIR/etc/"*; do
+        filename=$(basename "$file")
+        link_system_config "$filename"
+    done
+fi
+
 # Install yay if not present
 if ! command -v yay &> /dev/null; then
     echo "Installing yay..."
