@@ -70,19 +70,16 @@ db
 db5.3
 dbus
 dbus-glib
-dbus-runit
 dconf
 debugedit
 default-cursors
 desktop-file-utils
 device-mapper
 dhcpcd
-dhcpcd-runit
 diffutils
 dmraid
 dnssec-anchors
 docker
-docker-runit
 dolphin
 dosfstools
 double-conversion
@@ -93,7 +90,6 @@ efibootmgr
 efivar
 electrum
 elogind
-elogind-runit
 emacs
 esysusers
 etmpfiles
@@ -162,7 +158,7 @@ gnome-themes-extra
 gnome-tweaks
 gnu-free-fonts
 gnulib-l10n
-gnu-netcat
+openbsd-netcat
 gnupg
 gnutls
 go
@@ -216,7 +212,6 @@ imath
 imlib2
 iniparser
 iproute2
-iptables
 iputils
 iso-codes
 isync
@@ -303,7 +298,6 @@ netpbm
 nettle
 net-tools
 networkmanager
-networkmanager-runit
 ninja
 npm
 npth
@@ -324,7 +318,6 @@ openmpi
 openpmix
 openresolv
 openssh
-openssh-runit
 openssl
 optipng
 opus
@@ -431,10 +424,8 @@ suitesparse
 svt-av1
 sxiv
 syncthing
-syncthing-runit
 sysfsutils
 syslog-ng
-syslog-ng-runit
 t1lib
 taglib
 tar
@@ -451,7 +442,6 @@ tinysparql
 tk
 tldr
 tlp
-tlp-runit
 tpm2-tss
 traceroute
 tree
