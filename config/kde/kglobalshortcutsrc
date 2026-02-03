@@ -7,6 +7,13 @@ Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Ke
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
+[Strawberry]
+_k_friendly_name=Strawberry
+next_track=Media Next,none,Next track
+play_pause=Media Play,none,Play/Pause
+prev_track=Media Previous,none,Previous track
+stop=Media Stop,none,Stop
+
 [kaccess]
 Toggle Screen Reader On and Off=none,Meta+Alt+S,Toggle Screen Reader On and Off
 _k_friendly_name=Accessibility
@@ -24,7 +31,7 @@ mute=Volume Mute,Volume Mute,Mute
 
 [ksmserver]
 Halt Without Confirmation=none,,Shut Down Without Confirmation
-Lock Session=none,Meta+L\tScreensaver,Lock Session
+Lock Session=Meta+L,Meta+L\tScreensaver,Lock Session
 Log Out=none,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
@@ -113,11 +120,11 @@ Walk Through Windows of Current Application Alternative=none,none,Walk Through W
 Walk Through Windows of Current Application Alternative (Reverse)=none,none,Walk Through Windows of Current Application Alternative (Reverse)
 Window Above Other Windows=none,,Keep Window Above Others
 Window Below Other Windows=none,,Keep Window Below Others
-Window Close=Meta+Shift+C,Alt+F4,Close Window
-Window Custom Quick Tile Bottom=none,,Custom Quick Tile Window to the Bottom
-Window Custom Quick Tile Left=none,,Custom Quick Tile Window to the Left
-Window Custom Quick Tile Right=none,,Custom Quick Tile Window to the Right
-Window Custom Quick Tile Top=none,,Custom Quick Tile Window to the Top
+Window Close=Alt+F4\tMeta+Shift+C,Alt+F4,Close Window
+Window Custom Quick Tile Bottom=Meta+Down,,Custom Quick Tile Window to the Bottom
+Window Custom Quick Tile Left=Meta+Left,,Custom Quick Tile Window to the Left
+Window Custom Quick Tile Right=Meta+Right,,Custom Quick Tile Window to the Right
+Window Custom Quick Tile Top=Meta+Up,,Custom Quick Tile Window to the Top
 Window Fullscreen=none,,Make Window Fullscreen
 Window Grow Horizontal=none,,Expand Window Horizontally
 Window Grow Vertical=none,,Expand Window Vertically
@@ -201,7 +208,7 @@ mediavolumeup=none,,Media volume up
 nextmedia=none,Media Next,Media playback next
 pausemedia=none,Media Pause,Pause media playback
 playmedia=none,,Play media playback
-playpausemedia=none,Media Play,Play/Pause media playback
+playpausemedia=Launch (5),Media Play,Play/Pause media playback
 previousmedia=none,Media Previous,Media playback previous
 stopmedia=none,Media Stop,Stop media playback
 
@@ -224,7 +231,7 @@ powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 [plasmashell]
 Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
 _k_friendly_name=plasmashell
-activate application launcher=Meta\tAlt+F1,Meta\tAlt+F1,Activate Application Launcher
+activate application launcher=Alt+F1,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=Meta+1,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=none,,Activate Task Manager Entry 10
 activate task manager entry 2=Meta+2,Meta+2,Activate Task Manager Entry 2
@@ -235,9 +242,11 @@ activate task manager entry 6=Meta+6,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
-activate widget 2=Esc,none,Activate Panel Widget
+activate widget 2=none,none,Activate Panel Widget
 activate widget 20=none,none,Activate Application Menu Widget
+activate widget 30=none,none,Activate Application Launcher Widget
 activate widget 44=none,none,Activate Icons-Only Task Manager Widget
+activate widget 55=Meta,none,Activate Application Launcher Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=Meta+Ctrl+X,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=Meta+Alt+P,Meta+Alt+P,Move keyboard focus between panels
@@ -248,7 +257,7 @@ manage activities=Meta+Q,Meta+Q,Show Activity Switcher
 next activity=Meta+A,none,Walk through activities
 previous activity=Meta+Shift+A,none,Walk through activities (Reverse)
 repeat_action=none,,Manually Invoke Action on Current Clipboard
-show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
+show dashboard=Meta+D,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
 show-on-mouse-pos=Meta+V,Meta+V,Show Clipboard Items at Mouse Position
 switch to next activity=none,,Switch to Next Activity
@@ -258,13 +267,16 @@ toggle do not disturb=none,,Toggle do not disturb
 [services][Alacritty.desktop]
 New=Meta+Shift+Return
 
+[services][net.local.alacritty.desktop]
+_launch=Meta+R
+
 [services][org.flameshot.Flameshot.desktop]
 Capture=Meta+Shift+S
 
 [services][org.kde.spectacle.desktop]
 RecordRegion=none
 RectangularRegionScreenShot=Meta+Shift+S
-_launch=Print\t
+_launch=Print
 
 [services][org.kde.touchpadshortcuts.desktop]
 ToggleTouchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku
