@@ -1,0 +1,11 @@
+[Libinput][10007][12976][MCHOSE G3 V2 Mouse]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+
+[Libinput][10248][548][ASUF1415:00 2808:0224 Mouse]
+PointerAcceleration=-1.000
+PointerAccelerationProfile=1
+
+[Libinput][14391][16965][YJX-CHIP MCHOSE G3 V2 Mouse]
+PointerAcceleration=-0.400
+PointerAccelerationProfile=1

@@ -1,2 +1,14 @@
 [Applications][antigravity]
 Seen=true
+
+[Applications][firefox]
+Seen=true
+
+[Applications][google-chrome]
+Seen=true
+
+[Applications][org.nicotine_plus.Nicotine]
+Seen=true
+
+[Applications][org.qbittorrent.qBittorrent]
+Seen=true
