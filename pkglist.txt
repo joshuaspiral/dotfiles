@@ -12,11 +12,6 @@ arandr
 arc-gtk-theme
 argon2
 ark
-artix-branding-base
-artix-grub-theme
-artix-gtk-presets
-artix-pipewire-loader
-artix-qt-presets
 assimp
 atkmm
 autofs
@@ -343,7 +338,6 @@ s-nail
 scrot
 sddm-kcm
 sddm-silent-theme
-sddm-theme-artix
 signal-desktop
 slop
 slurp

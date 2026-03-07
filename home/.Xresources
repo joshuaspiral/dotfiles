@@ -1,0 +1,9 @@
+! HiDPI scaling — adjust DPI to match your screen
+! 144 = 2880x1800 @ 15.6" (2x scaling equivalent)
+Xft.dpi: 144
+
+! Anti-aliasing and hinting
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
