@@ -1,0 +1,13 @@
+# [opener]
+# play = [
+#     { run = 'mpv "$@"', orphan = true, for = "unix" }
+# ]
+# view = [
+#     { run = 'feh "$@"', orphan = true, for = "unix" }
+# ]
+#
+# [open]
+# rules = [
+#     { mime = "video/*", use = "play" },
+#     { mime = "image/*", use = "view" }
+# ]

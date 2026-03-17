@@ -1,0 +1,12 @@
+background-color = #1d2021dd
+border-color = #d79921
+text-color = #ebdbb2
+selection-color = #fbf1c7
+selection-background = #504945
+font = GeistMono Nerd Font
+font-size = 14
+fuzzy-match = true
+num-results = 8
+corner-radius = 0
+border-width = 2
+history = true

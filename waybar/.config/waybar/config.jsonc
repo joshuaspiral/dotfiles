@@ -1,0 +1,56 @@
+{
+    "height": 28,
+    "spacing": 0,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "backlight", "battery", "network", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "<span color='#d79921'>[</span>{name}<span color='#d79921'>]</span>"
+    },
+
+    "sway/mode": {
+        "format": "<span color='#d79921'>[</span>{}<span color='#d79921'>]</span>"
+    },
+
+"clock": {
+        "format": "<span color='#d79921'>[</span>{:%a %d %b %H:%M}<span color='#d79921'>]</span>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "on-click": "kitty --class calendar -e calcurse",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "format": {
+                "months": "<span color='#ebdbb2'><b>{}</b></span>",
+                "days": "<span color='#a89984'>{}</span>",
+                "weekdays": "<span color='#d79921'><b>{}</b></span>",
+                "today": "<span color='#cc241d'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "cpu": { 
+        "format": "<span color='#d79921'>[</span>cpu {usage}%<span color='#d79921'>]</span>" 
+    },
+    "memory": { 
+        "format": "<span color='#d79921'>[</span>mem {percentage}%<span color='#d79921'>]</span>" 
+    },
+    "pulseaudio": { 
+        "format": "<span color='#d79921'>[</span>vol {volume}%<span color='#d79921'>]</span>" 
+    },
+    "backlight": {
+        "format": "<span color='#d79921'>[</span>bri {percent}%<span color='#d79921'>]</span>",
+        "tooltip": false
+    },
+
+    "battery": { 
+        "format": "<span color='#d79921'>[</span>bat {capacity}%<span color='#d79921'>]</span>" 
+    },
+    "network": { 
+        "format": "<span color='#d79921'>[</span>net {essid}<span color='#d79921'>]</span>" 
+    },
+    "tray": {
+        "spacing": 10
+    }
+}

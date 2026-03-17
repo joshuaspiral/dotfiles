@@ -1,0 +1,32 @@
+* {
+  font-family: "GeistMono Nerd Font", monospace;
+  font-size: 13px;
+  padding: 0;
+}
+
+window#waybar {
+  background-color: #1d2021;
+  color: #ebdbb2;
+  border-bottom: 1px solid #3c3836;
+}
+
+#cpu,
+#memory,
+#pulseaudio,
+#backlight,
+#battery,
+#network,
+#clock,
+#tray {
+  padding: 0 4px;
+  color: #a89984;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: #928374;
+}
+
+#workspaces button.focused {
+  color: #d79921;
+}

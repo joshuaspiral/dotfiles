@@ -1,0 +1,11 @@
+color=000000
+font=GeistMono Nerd Font
+indicator-radius=100
+indicator-thickness=7
+line-color=00000000
+ring-color=00000000
+inside-color=00000000
+key-hl-color=8a9a65
+separator-color=00000000
+text-color=00000000
+show-failed-attempts

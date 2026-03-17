@@ -1,0 +1,12 @@
+[General]
+Binary = calcurse
+Hostname = dav.joshuaspiral.xyz
+Path = /dav.php/calendars/joshua/default/
+HTTPS = Yes
+AuthMethod = basic
+SyncFilter = cal,todo
+DryRun = No
+
+[Auth]
+Username = joshua
+Password = 
