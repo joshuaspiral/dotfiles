@@ -25,7 +25,7 @@ if [[ "$1" == "--install-packages" ]]; then
 fi
 
 # Packages to stow
-PACKAGES="sway waybar nvim fish kitty tofi dunst system yazi gtk calcurse"
+PACKAGES="sway waybar nvim fish kitty tofi dunst system yazi gtk calcurse zathura"
 
 echo "Stowing packages..."
 for pkg in $PACKAGES; do

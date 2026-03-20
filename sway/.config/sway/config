@@ -18,6 +18,7 @@ workspace 6 output DP-1
 workspace 7 output DP-2
 workspace 8 output DP-2
 workspace 9 output DP-2
+
 # ── Appearance ────────────────────────────────────────────────────────────────
 default_border pixel 2
 default_floating_border pixel 2
@@ -27,6 +28,7 @@ smart_gaps on
 smart_borders on
 seat * xcursor_theme Adwaita 24
 font pango:GeistMono Nerd Font 12
+focus_follows_mouse yes
 
 # Colors:                  border    bg        text      indicator child_border
 client.focused             #d79921   #282828   #ebdbb2   #8ec07c   #d79921
@@ -47,14 +49,10 @@ input "type:touchpad" {
 }
 
 # ── Window Assignments ────────────────────────────────────────────────────────
-# Floating rules for utility windows
-for_window [window_role="pop-up"] floating enable
+for_window [window_role="pop-up"]    floating enable
 for_window [window_role="task_dialog"] floating enable
-
-# Assign Obsidian
-for_window [app_id="obsidian"] move to workspace number 4
-# Assign calcurse (targets the specific app_id defined in autostart)
-for_window [app_id="calendar"] move to workspace number 9
+for_window [app_id="obsidian"]       move to workspace number 4
+for_window [app_id="calendar"]       move to workspace number 9
 
 # ── GTK Theme Enforcement ─────────────────────────────────────────────────────
 set $gnome-schema org.gnome.desktop.interface
@@ -65,6 +63,16 @@ exec_always {
     gsettings set $gnome-schema cursor-theme 'Adwaita'
     gsettings set $gnome-schema font-name 'GeistMono Nerd Font 12'
 }
+
+# ── Idle / Lock / Sleep ───────────────────────────────────────────────────────
+set $lock swaylock --config ~/.config/swaylock/config
+
+exec swayidle -w \
+    timeout 300  '$lock' \
+    timeout 320  'swaymsg "output * dpms off"' \
+    resume       'swaymsg "output * dpms on"' \
+    before-sleep '$lock'
+
 # ── Autostart ─────────────────────────────────────────────────────────────────
 exec dbus-update-activation-environment --all
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -72,35 +80,54 @@ exec gnome-keyring-daemon --start --components=secrets
 exec swww-daemon
 exec dunst
 exec fcitx5 -d
-exec swayidle -w \
-    # timeout 300 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock --config ~/.config/swaylock/config'
 exec blueman-applet
 exec udiskie -t
-exec kanshi &
+exec kanshi
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --watch cliphist store
+exec wlsunset -l 43.7 -L -79.4
 # Delay apps that rely on workspace-output assignments (kanshi race)
 exec sleep 2 && firefox
 exec sleep 2 && obsidian
 exec sleep 2 && kitty --class calendar -e calcurse
+# if calcurse is already running, change current workspace to calcurse (workspace 9)
 
 bar {
     swaybar_command waybar
 }
+
 # ── Keybindings — Applications ────────────────────────────────────────────────
-bindsym $mod+p exec tofi-drun | xargs swaymsg exec --
+bindsym $mod+p         exec tofi-drun | xargs swaymsg exec --
 bindsym $mod+Shift+Return exec kitty
-bindsym $mod+c exec firefox
-bindsym $mod+o exec obsidian
-bindsym $mod+r exec kitty -e fish -c yazi
-# a for appointment
-bindsym $mod+a exec kitty --class calendar -e calcurse
-bindsym $mod+Shift+s exec bash -c 'D=$HOME/Pictures/Screenshots; mkdir -p "$D"; grim -g "$(slurp)" - | tee "$D/$(date +%Y%m%d_%H%M%S).png" | wl-copy'
+bindsym $mod+c         exec firefox
+bindsym $mod+o         exec obsidian
+bindsym $mod+r         exec kitty -e fish -c yazi
+bindsym $mod+a         exec kitty --class calendar -e calcurse
+
+# Screenshots
+bindsym $mod+Shift+s   exec bash -c 'D=$HOME/Pictures/Screenshots; mkdir -p "$D"; grim -g "$(slurp)" - | tee "$D/$(date +%Y%m%d_%H%M%S).png" | wl-copy'
+bindsym $mod+Shift+a   exec bash -c 'grim -g "$(slurp)" - | satty --filename -'
+bindsym $mod+Shift+o exec ~/.local/bin/ocr-picker
+bindsym $mod+Shift+m exec bash -c 'grim -g "$(slurp)" /tmp/math.png && pix2tex /tmp/math.png | wl-copy && notify-send "Math OCR" "LaTeX copied to clipboard"'
+
+# Screen Recording
+bindsym $mod+s exec bash -c 'if pgrep wf-recorder; then pkill -INT wf-recorder && notify-send "Recording" "Stopped and saved"; else D=$HOME/Videos/Recordings; mkdir -p "$D"; wf-recorder -g "$(slurp)" -f "$D/$(date +%Y%m%d_%H%M%S).mp4" && notify-send "Recording" "Started"; fi'
+
+# Notifications
+bindsym $mod+n         exec dunstctl close
+bindsym $mod+Shift+n   exec dunstctl close-all
+
+# ── Keybindings — Session ─────────────────────────────────────────────────────
+# Lock + displays off (use before sleep)
+bindsym $mod+Shift+Escape   exec '$lock & sleep 1 && swaymsg "output * dpms off"'
+# Suspend (use at night — locks first via before-sleep hook)
+bindsym $mod+Shift+F12 exec systemctl suspend
+# Exit with confirmation
+bindsym $mod+Shift+q   exec swaynag -t warning -m 'Exit sway?' -B 'Yes' 'swaymsg exit'
 
 # ── Keybindings — WM ──────────────────────────────────────────────────────────
-bindsym $mod+b bar mode toggle
+bindsym $mod+b         bar mode toggle
+bindsym $mod+Escape    exec $lock
 
 # Vim-directional focus
 bindsym $mod+h focus left
@@ -113,9 +140,9 @@ bindsym $mod+i splith
 bindsym $mod+d splitv
 
 mode "resize" {
-    bindsym h resize grow width 20px
-    bindsym l resize shrink width 20px
-    bindsym j resize grow height 20px
+    bindsym h resize grow   width  20px
+    bindsym l resize shrink width  20px
+    bindsym j resize grow   height 20px
     bindsym k resize shrink height 20px
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -123,24 +150,21 @@ mode "resize" {
 }
 bindsym $mod+Ctrl+r mode "resize"
 
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+c kill
-bindsym $mod+t layout splith
+bindsym $mod+Tab       workspace back_and_forth
+bindsym $mod+Shift+c   kill
+bindsym $mod+t         layout splith
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+Shift+q exit
-bindsym $mod+Escape exec swaylock --config ~/.config/swaylock/config
 
-bindsym $mod+grave move scratchpad
+bindsym $mod+grave       move scratchpad
 bindsym $mod+Shift+grave scratchpad show
 
-bindsym $mod+comma focus output left
-bindsym $mod+period focus output right
-bindsym $mod+Shift+comma move container to output left
+bindsym $mod+comma       focus output left
+bindsym $mod+period      focus output right
+bindsym $mod+Shift+comma  move container to output left
 bindsym $mod+Shift+period move container to output right
 
 # Layouts
 bindsym $mod+w layout tabbed
-bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
 
 # Move focused window
@@ -170,18 +194,18 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 
-bindsym $mod+0 workspace private
+bindsym $mod+0       workspace private
 bindsym $mod+Shift+0 move container to workspace private
 
-# Media
+# ── Media ─────────────────────────────────────────────────────────────────────
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp exec brightnessctl set +1%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp  exec brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 
-bindsym $mod+Shift+r exec sway reload;
-bindsym $mod+v exec cliphist list | tofi | cliphist decode | wl-copy
+bindsym $mod+Shift+r exec sway reload
+bindsym $mod+v       exec cliphist list | tofi | cliphist decode | wl-copy
 
 floating_modifier $mod normal

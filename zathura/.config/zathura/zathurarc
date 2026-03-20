@@ -51,3 +51,5 @@ map i recolor
 map f toggle_fullscreen
 map [normal] <C-i> zoom in
 map [normal] <C-o> zoom out
+map m exec "/home/joshua/.local/bin/zathura-extract \"$FILE\" $PAGE mark"
+map X exec "/home/joshua/.local/bin/zathura-extract \"$FILE\" $PAGE export"
