@@ -1,0 +1,5 @@
+profile "triple-monitor" {
+    output eDP-1 mode 2880x1800@120Hz position 0,270 scale 2
+    output "HDMI-A-1" 2560x1440@100Hz position 1440,0 scale 1
+    output "DP-2" mode 1920x1080@60Hz position 4000,180 scale 1
+}

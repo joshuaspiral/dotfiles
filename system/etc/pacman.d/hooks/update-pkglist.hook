@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Updating dotfiles package list...
+When = PostTransaction
+Exec = /usr/bin/sudo -u joshua /bin/sh -c '/usr/bin/pacman -Qqe > /home/joshua/dotfiles/pkglist.txt'

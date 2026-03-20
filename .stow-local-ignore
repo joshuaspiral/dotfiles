@@ -1,0 +1,6 @@
+\.git
+.*\.swp
+\.stow-local-ignore
+README.md
+setup.sh
+pkglist.txt

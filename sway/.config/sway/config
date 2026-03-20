@@ -82,7 +82,7 @@ exec dunst
 exec fcitx5 -d
 exec blueman-applet
 exec udiskie -t
-exec kanshi
+exec_always pkill kanshi; exec kanshi
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --watch cliphist store
 exec wlsunset -l 43.7 -L -79.4

@@ -9,4 +9,4 @@ DryRun = No
 
 [Auth]
 Username = joshua
-Password = 
+PasswordCommand = secret-tool lookup application calcurse

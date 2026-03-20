@@ -6,3 +6,4 @@ aux/suckless/dmenu/dmenu
 aux/suckless/dwmblocks/dwmblocks
 yay/
 fish/.config/fish/fish_variables
+.local/
