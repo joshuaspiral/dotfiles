@@ -7,4 +7,4 @@ Target = *
 [Action]
 Description = Updating dotfiles package list...
 When = PostTransaction
-Exec = /usr/bin/sudo -u joshua /bin/sh -c '/usr/bin/pacman -Qqe > /home/joshua/dotfiles/pkglist.txt'
+Exec = /bin/sh -c 'if [ -d /home/joshua/dotfiles ]; then /usr/bin/sudo -u joshua /usr/bin/pacman -Qqe > /home/joshua/dotfiles/pkglist.txt; fi'

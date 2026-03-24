@@ -1,13 +1,13 @@
-# [opener]
-# play = [
-#     { run = 'mpv "$@"', orphan = true, for = "unix" }
-# ]
-# view = [
-#     { run = 'feh "$@"', orphan = true, for = "unix" }
-# ]
-#
-# [open]
-# rules = [
-#     { mime = "video/*", use = "play" },
-#     { mime = "image/*", use = "view" }
-# ]
+[opener]
+image = [
+    { run = 'feh "$@"', orphan = true, desc = "feh" }
+]
+pdf = [
+    { run = 'zathura "$@"', orphan = true, desc = "zathura" }
+]
+
+[open]
+prepend_rules = [
+        { mime = "image/*", use = "image" },
+        { mime = "application/pdf", use = "pdf" }
+]

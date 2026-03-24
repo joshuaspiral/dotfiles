@@ -19,11 +19,11 @@ if [[ "$1" == "--install-packages" ]]; then
 
     if ! command -v yay &> /dev/null; then
         echo "Installing yay..."
+        rm -rf /tmp/yay
         git clone https://aur.archlinux.org/yay.git /tmp/yay
         cd /tmp/yay && makepkg -si --noconfirm
         rm -rf /tmp/yay
     fi
-
     echo "Installing AUR packages..."
     yay -S --needed --noconfirm $AUR_PKGS
 
