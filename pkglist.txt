@@ -16,6 +16,8 @@ chromium
 clang
 cliphist
 dunst
+emacs
+ethtool
 ex-vi-compat
 eza
 fcitx5
@@ -29,6 +31,7 @@ ffmpegthumbnailer
 firefox
 fish
 fzf
+gimp
 git
 github-cli
 gitleaks
@@ -74,6 +77,7 @@ ripgrep
 seahorse
 signal-desktop
 slurp
+smartmontools
 sof-firmware
 starship
 stow
