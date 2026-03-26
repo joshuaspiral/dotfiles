@@ -1,6 +1,6 @@
 [opener]
 image = [
-    { run = 'feh "$@"', orphan = true, desc = "feh" }
+    { run = 'imv "$@"', orphan = true, desc = "imv" }
 ]
 pdf = [
     { run = 'zathura "$@"', orphan = true, desc = "zathura" }

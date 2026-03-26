@@ -2,39 +2,39 @@
     ### Display ###
     monitor = 0
     follow = mouse
-
+    
     ### Geometry ###
-    width = 380
-    height = (0, 300)
+    width = 300
+    height = (0, 200)
     origin = top-right
-    offset = 0x0
+    offset = (12, 12)
     scale = 0
     notification_limit = 5
 
     ### Progress bar ###
     progress_bar = true
-    progress_bar_height = 10
+    progress_bar_height = 8
     progress_bar_frame_width = 1
     progress_bar_min_width = 150
     progress_bar_max_width = 300
 
     ### Appearance ###
-    transparency = 10
-    separator_height = 2
-    padding = 12
-    horizontal_padding = 12
-    text_icon_padding = 0
-    frame_width = 2
-    frame_color = "#d79921"
-    gap_size = 6
+    transparency = 0
+    separator_height = 1
+    padding = 6
+    horizontal_padding = 8
+    text_icon_padding = 8
+    frame_width = 1
+    frame_color = "#b8bb26"
+    gap_size = 2
     separator_color = frame
     sort = yes
 
     ### Text ###
-    font = GeistMono Nerd Font
+    font = GeistMono Nerd Font 9
     line_height = 0
     markup = full
-    format = "<b>%s</b>\n%b"
+    format = "<span foreground='#a89984'>[%a]</span>\n<b>%s</b>\n%b"
     alignment = left
     vertical_alignment = center
     show_age_threshold = 60
@@ -48,8 +48,8 @@
     enable_recursive_icon_lookup = true
     icon_theme = "Papirus-Dark, Adwaita"
     icon_position = left
-    min_icon_size = 32
-    max_icon_size = 64
+    min_icon_size = 24
+    max_icon_size = 32
 
     ### History ###
     sticky_history = yes
@@ -61,7 +61,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 6
+    corner_radius = 0
     ignore_dbusclose = false
     force_xwayland = false
     force_xinerama = false
@@ -74,30 +74,25 @@
 
 [urgency_low]
     background = "#1d2021"
-    foreground = "#ebdbb2"
-    frame_color = "#504945"
-    timeout = 5
+    foreground = "#a89984"
+    frame_color = "#3c3836"
+    timeout = 3
 
 [urgency_normal]
-    background = "#282828"
+    background = "#1d2021"
     foreground = "#ebdbb2"
-    frame_color = "#d79921"
-    timeout = 8
+    frame_color = "#b8bb26"
+    timeout = 5
 
 [urgency_critical]
-    background = "#cc241d"
-    foreground = "#fbf1c7"
-    frame_color = "#fb4934"
+    background = "#1d2021"
+    foreground = "#fb4934"
+    frame_color = "#cc241d"
     timeout = 0
     icon = dialog-error
 
-[spotify]
-    appname = "Spotify"
-    format = "<b>🎵 %s</b>\n%b"
-    frame_color = "#98971a"
-
 [battery_warning]
     summary = "Battery*"
-    format = "<b>🔋 %s</b>\n%b"
+    format = "<span foreground='#d3869b'>[System]</span>\n<b>%s</b>\n%b"
     frame_color = "#d3869b"
     urgency = critical
