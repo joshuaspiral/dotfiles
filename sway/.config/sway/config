@@ -42,8 +42,6 @@ input "type:touchpad" {
 # Window Rules
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [app_id="obsidian"] move to workspace number 4
-for_window [app_id="calendar"] move to workspace number 9
 
 # GTK Theme
 set $gnome-schema org.gnome.desktop.interface
@@ -68,7 +66,7 @@ exec swayidle -w \
 exec dbus-update-activation-environment --all
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec gnome-keyring-daemon --start --components=secrets
-exec swww-daemon
+exec awww-daemon
 exec dunst
 exec fcitx5 -d
 exec blueman-applet
@@ -77,9 +75,8 @@ exec_always pkill kanshi; exec kanshi
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --watch cliphist store
 exec wlsunset -l 43.7 -L -79.4
+exec emacs
 exec firefox
-exec obsidian
-exec kitty --class calendar -e calcurse
 
 bar {
     swaybar_command waybar
@@ -87,17 +84,23 @@ bar {
 
 # Keybindings: Apps
 bindsym $mod+p exec "tofi-run | xargs swaymsg exec --"
+bindsym $mod+Shift+s exec bash -c 'D=~/Pictures/Screenshots; mkdir -p "$D"; F="$D/$(date +%Y%m%d_%H%M%S).png"; grim -g "$(slurp)" - | tee "$F" | wl-copy && notify-send "Screenshot" "Selected region captured"'
+
 bindsym $mod+Shift+Return exec kitty
-bindsym $mod+b exec firefox
+bindsym $mod+w exec firefox
 bindsym $mod+o exec obsidian
 bindsym $mod+r exec kitty -e fish -c yazi
-bindsym $mod+a exec swaymsg '[app_id="calendar"] focus' || exec kitty --class calendar -e calcurse
-bindsym $mod+Shift+s exec bash -c 'D=$HOME/Pictures/Screenshots; mkdir -p "$D"; F="$D/$(date +%Y%m%d_%H%M%S).png"; grim -g "$(slurp)" - | tee "$F" | wl-copy && notify-send "Screenshot" "Selected region captured"'
+bindsym $mod+e exec emacs
+
+bindsym $mod+Shift+w exec bash -c 'WP=$(find ~/.walls/ -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | tofi --prompt-text="Wallpaper: ") && [ -n "$WP" ] && awww img "$WP" --transition-type grow'
 bindsym $mod+s exec ~/.local/bin/screenshot-active.sh
 bindsym $mod+Shift+a exec bash -c 'grim -g "$(slurp)" - | satty --filename -'
+bindsym $mod+v exec bash -c 'if pgrep wf-recorder; then pkill -INT wf-recorder && notify-send "Recording" "Stopped and saved"; else D=$HOME/Videos/Recordings; mkdir -p "$D"; wf-recorder -g "$(slurp)" -f "$D/$(date +%Y%m%d_%H%M%S).mp4" && notify-send "Recording" "Started"; fi'
+
+
 bindsym $mod+Shift+o exec ~/.local/bin/ocr-picker
 bindsym $mod+Shift+m exec bash -c 'grim -g "$(slurp)" /tmp/math.png && pix2tex /tmp/math.png | wl-copy && notify-send "Math OCR" "LaTeX copied to clipboard"'
-bindsym $mod+v exec bash -c 'if pgrep wf-recorder; then pkill -INT wf-recorder && notify-send "Recording" "Stopped and saved"; else D=$HOME/Videos/Recordings; mkdir -p "$D"; wf-recorder -g "$(slurp)" -f "$D/$(date +%Y%m%d_%H%M%S).mp4" && notify-send "Recording" "Started"; fi'
+
 bindsym $mod+n exec dunstctl close
 bindsym $mod+Shift+n exec dunstctl close-all
 
@@ -130,7 +133,7 @@ bindsym $mod+Ctrl+r mode "resize"
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+c kill
-bindsym $mod+t layout splith
+# bindsym $mod+h layout splith
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+grave move scratchpad
 bindsym $mod+Shift+grave scratchpad show
@@ -138,8 +141,8 @@ bindsym $mod+comma focus output left
 bindsym $mod+period focus output right
 bindsym $mod+Shift+comma move container to output left, focus output left
 bindsym $mod+Shift+period move container to output right, focus output right
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+# bindsym $mod+Shift+e layout toggle split
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up

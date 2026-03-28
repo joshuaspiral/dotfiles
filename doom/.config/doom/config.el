@@ -43,7 +43,7 @@
 (setq display-line-numbers-type `relative)
 
 ;j; transparency!
-(add-to-list 'default-frame-alist '(alpha-background . 70))
+(add-to-list 'default-frame-alist '(alpha-background . 85))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -109,3 +109,20 @@
               (lambda ()
                 (TeX-command-run-all nil))
               nil t)))  ; nil t = local to buffer only
+
+
+(defun my/doom-sync-and-reload ()
+  "Run doom sync asynchronously, then reload Doom configuration."
+  (interactive)
+  (message "Running doom sync...")
+  (set-process-sentinel
+   (start-process "doom-sync" "*doom-sync*" (expand-file-name "bin/doom" doom-emacs-dir) "sync")
+   (lambda (process event)
+     (when (string= event "finished\n")
+       (message "Sync complete. Reloading...")
+       (doom/reload)))))
+
+;; Bind to Space h R (or your preferred key sequence)
+(map! :leader
+      :desc "Sync and reload Doom"
+      "h R" #'my/doom-sync-and-reload)
