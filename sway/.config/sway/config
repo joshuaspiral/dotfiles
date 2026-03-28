@@ -88,15 +88,16 @@ bar {
 # Keybindings: Apps
 bindsym $mod+p exec "tofi-run | xargs swaymsg exec --"
 bindsym $mod+Shift+Return exec kitty
-bindsym $mod+c exec firefox
+bindsym $mod+b exec firefox
 bindsym $mod+o exec obsidian
 bindsym $mod+r exec kitty -e fish -c yazi
 bindsym $mod+a exec swaymsg '[app_id="calendar"] focus' || exec kitty --class calendar -e calcurse
-bindsym $mod+Shift+s exec bash -c 'D=$HOME/Pictures/Screenshots; mkdir -p "$D"; grim -g "$(slurp)" - | tee "$D/$(date +%Y%m%d_%H%M%S).png" | wl-copy'
+bindsym $mod+Shift+s exec bash -c 'D=$HOME/Pictures/Screenshots; mkdir -p "$D"; F="$D/$(date +%Y%m%d_%H%M%S).png"; grim -g "$(slurp)" - | tee "$F" | wl-copy && notify-send "Screenshot" "Selected region captured"'
+bindsym $mod+s exec ~/.local/bin/screenshot-active.sh
 bindsym $mod+Shift+a exec bash -c 'grim -g "$(slurp)" - | satty --filename -'
 bindsym $mod+Shift+o exec ~/.local/bin/ocr-picker
 bindsym $mod+Shift+m exec bash -c 'grim -g "$(slurp)" /tmp/math.png && pix2tex /tmp/math.png | wl-copy && notify-send "Math OCR" "LaTeX copied to clipboard"'
-bindsym $mod+s exec bash -c 'if pgrep wf-recorder; then pkill -INT wf-recorder && notify-send "Recording" "Stopped and saved"; else D=$HOME/Videos/Recordings; mkdir -p "$D"; wf-recorder -g "$(slurp)" -f "$D/$(date +%Y%m%d_%H%M%S).mp4" && notify-send "Recording" "Started"; fi'
+bindsym $mod+v exec bash -c 'if pgrep wf-recorder; then pkill -INT wf-recorder && notify-send "Recording" "Stopped and saved"; else D=$HOME/Videos/Recordings; mkdir -p "$D"; wf-recorder -g "$(slurp)" -f "$D/$(date +%Y%m%d_%H%M%S).mp4" && notify-send "Recording" "Started"; fi'
 bindsym $mod+n exec dunstctl close
 bindsym $mod+Shift+n exec dunstctl close-all
 
@@ -106,7 +107,7 @@ bindsym $mod+Shift+F12 exec $lock && systemctl suspend
 bindsym $mod+Shift+q exec swaynag -t warning -m 'Exit sway?' -B 'Yes' 'swaymsg exit'
 
 # Keybindings: WM
-bindsym $mod+b bar mode toggle
+# bindsym $mod+b bar mode toggle
 bindsym $mod+Escape exec $lock
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -175,6 +176,6 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym $mod+Shift+r exec sway reload
-bindsym $mod+v exec cliphist list | tofi | cliphist decode | wl-copy
+bindsym $mod+c exec cliphist list | tofi | cliphist decode | wl-copy
 
 floating_modifier $mod normal

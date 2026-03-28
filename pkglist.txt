@@ -1,5 +1,6 @@
 7zip
 acpi
+awww
 base
 base-devel
 bat
@@ -18,8 +19,10 @@ chafa
 chromium
 clang
 cliphist
+cmake
+dosfstools
 dunst
-emacs
+emacs-wayland
 ethtool
 ex-vi-compat
 eza
@@ -41,9 +44,11 @@ github-cli
 gitleaks
 gnome-keyring
 grim
+ical2orgpy-git
 imagemagick
 imv
 intel-ucode
+isync
 jq
 kanshi
 kitty
@@ -54,6 +59,7 @@ linux-zen
 linux-zen-headers
 ly
 mpv
+mu
 ncspot
 neovim
 network-manager-applet
@@ -65,6 +71,7 @@ npm
 obsidian
 otf-geist-mono-nerd
 pamixer
+pandoc-cli
 papirus-icon-theme
 pavucontrol
 pipewire
@@ -81,7 +88,9 @@ python-pip
 python313
 qt5-wayland
 qt6-wayland
+resvg
 ripgrep
+rsync
 seahorse
 signal-desktop
 slurp
@@ -89,13 +98,13 @@ smartmontools
 sof-firmware
 starship
 stow
+strawberry
 subtui-bin
 sudo
 sway
 swaybg
 swayidle
 swaylock
-swww
 tailscale
 texlive-basic
 texlive-bibtexextra
