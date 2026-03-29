@@ -1,35 +1,14 @@
-#+title: Config
-#+TITLE: Doom Emacs Configuration
-#+AUTHOR: Joshua Yeung
-
-* Identity
-Set up user identification for GPG, email, and file templates.
-
-#+begin_src emacs-lisp
 (setq user-full-name "Joshua Yeung"
       user-mail-address "hi@joshuaspiral.xyz")
-#+end_src
 
-* Visuals and Theme
-#+begin_src emacs-lisp
 (setq doom-theme 'doom-gruvbox
       doom-font (font-spec :family "Geist Mono Nerd Font" :size 18))
 
 (setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(alpha-background . 85))
-#+end_src
 
-* Terminal
-Set the default shell for `vterm`.
-
-#+begin_src emacs-lisp
 (setq vterm-shell (executable-find "fish"))
-#+end_src
 
-* Org Mode
-Define directory structures and visual behaviors for Org files.
-
-#+begin_src emacs-lisp
 (setq org-directory "~/org/")
 (setq org-agenda-files (directory-files-recursively "~/org/agenda/" "\\.org$"))
 
@@ -47,12 +26,7 @@ Define directory structures and visual behaviors for Org files.
      (C      . t)
      (shell  . t)
      (latex  . t))))
-#+end_src
 
-* LaTeX
-Configure Zathura as the viewer and establish auto-compilation on save for $$\LaTeX$$.
-
-#+begin_src emacs-lisp
 (setq +latex-viewers '(zathura))
 
 (with-eval-after-load 'latex
@@ -66,13 +40,7 @@ Configure Zathura as the viewer and establish auto-compilation on save for $$\La
               (lambda ()
                 (TeX-command-run-all nil))
               nil t)))
-#+end_src
 
-* Encryption and GPG
-Configure EasyPG Assistant (EPA) and define keybindings for encryption and decryption. By setting `epa-file-encrypt-to`, Emacs will not ask you who to encrypt files for; it defaults to you.
-
-
-#+begin_src emacs-lisp
 (require 'epa)
 (setenv "GPG_AGENT_INFO" nil)
 (setq epa-file-encrypt-to '("hi@joshuaspiral.xyz"))
@@ -92,34 +60,23 @@ Configure EasyPG Assistant (EPA) and define keybindings for encryption and decry
       :desc "Encrypt region" "r" #'epa-encrypt-region
       :desc "Decrypt region" "R" #'epa-decrypt-region
       :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
-#+end_src
 
-* Dashboard Configuration
-Custom ASCII banner.
-
-#+begin_src emacs-lisp
 (defun my-custom-dashboard-ascii ()
   "Insert custom ASCII art into the Doom dashboard."
   (let* ((banner '("  ^~^  ,"
                    " ('Y') )"
                    " /   \\/"
-                   "(\\\\|||/) hjw")))
-    (put-text-property
-     (point)
-     (dolist (line banner (insert "\n"))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (propertize line 'face 'doom-dashboard-banner))
-               "\n"))
-     'read-only t)))
+                   "(\\\\|||/) hjw"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (dolist (line banner)
+      (insert (propertize (+doom-dashboard--center longest-line line)
+                          'face 'doom-dashboard-banner) "\n"))))
 
-(setq +doom-dashboard-ascii-banner-fn #'my-custom-dashboard-ascii)
-#+end_src
+(setq +doom-dashboard-ascii-colors '("blue" "blue" "blue" "blue"))
+(setq +doom-dashboard-functions '(my-custom-dashboard-ascii
+                                  doom-dashboard-widget-shortmenu
+                                  doom-dashboard-widget-loaded))
 
-* Custom Functions
-Utility commands for managing the editor state.
-
-#+begin_src emacs-lisp
 (defun my/doom-sync-and-reload ()
   "Run doom sync asynchronously, then reload Doom configuration."
   (interactive)
@@ -134,4 +91,3 @@ Utility commands for managing the editor state.
 (map! :leader
       :desc "Sync and reload Doom"
       "h R" #'my/doom-sync-and-reload)
-#+end_src

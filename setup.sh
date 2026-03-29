@@ -42,12 +42,17 @@ sudo stow --adopt --target="/" --dir="$STOW_DIR" system
 sudo git checkout -- "$STOW_DIR/system"
 
 echo "Stowing user packages..."
-cd "$STOW_DIR"
+cd "$STOW_DIR" || exit
 for d in */; do
     pkg="${d%/}"
     if [[ "$pkg" != "system" && "$pkg" != "scripts" && "$pkg" != ".git" ]]; then
         stow --adopt --target="$TARGET" --dir="$STOW_DIR" "$pkg"
-        git checkout -- "$STOW_DIR/$pkg" 
+
+        # Only checkout if the path is tracked by git
+        if git ls-files --error-unmatch "$STOW_DIR/$pkg" &>/dev/null; then
+            git checkout -- "$STOW_DIR/$pkg"
+        fi
+
         echo "Stowed $pkg"
     fi
 done
