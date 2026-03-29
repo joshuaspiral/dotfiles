@@ -1,0 +1,130 @@
+#+title: Config
+#+TITLE: Doom Emacs Configuration
+#+AUTHOR: Joshua Yeung
+
+* Identity
+Set up user identification for GPG, email, and file templates.
+
+#+begin_src emacs-lisp
+(setq user-full-name "Joshua Yeung"
+      user-mail-address "hi@joshuaspiral.xyz")
+#+end_src
+
+* Visuals and Theme
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-gruvbox
+      doom-font (font-spec :family "Geist Mono Nerd Font" :size 18))
+
+(setq display-line-numbers-type 'relative)
+(add-to-list 'default-frame-alist '(alpha-background . 85))
+#+end_src
+
+* Terminal
+Set the default shell for `vterm`.
+
+#+begin_src emacs-lisp
+(setq vterm-shell (executable-find "fish"))
+#+end_src
+
+* Org Mode
+Define directory structures and visual behaviors for Org files.
+
+#+begin_src emacs-lisp
+(setq org-directory "~/org/")
+(setq org-agenda-files (directory-files-recursively "~/org/agenda/" "\\.org$"))
+
+(with-eval-after-load 'org
+  (setq org-hide-emphasis-markers t
+        org-startup-indented t
+        org-pretty-entities t
+        org-preview-latex-default-process 'dvisvgm
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (C      . t)
+     (shell  . t)
+     (latex  . t))))
+#+end_src
+
+* LaTeX
+Configure Zathura as the viewer and establish auto-compilation on save for $$\LaTeX$$.
+
+#+begin_src emacs-lisp
+(setq +latex-viewers '(zathura))
+
+(with-eval-after-load 'latex
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        TeX-save-query nil))
+
+(add-hook! 'LaTeX-mode-hook
+  (defun my/latex-auto-compile ()
+    (add-hook 'after-save-hook
+              (lambda ()
+                (TeX-command-run-all nil))
+              nil t)))
+#+end_src
+
+* Encryption and GPG
+Configure EasyPG Assistant (EPA) and define keybindings for encryption and decryption. By setting `epa-file-encrypt-to`, Emacs will not ask you who to encrypt files for; it defaults to you.
+
+
+#+begin_src emacs-lisp
+(defun my/open-encrypted-scratch ()
+  "Open a temporary buffer that saves as an encrypted GPG file."
+  (interactive)
+  (let ((file (expand-file-name (format "scratch-%s.txt.gpg" (format-time-string "%Y%m%d%H%M%S")) "~/.gnupg/secure-notes/")))
+    (make-directory (file-name-directory file) t)
+    (find-file file)
+    (insert "# Secure scratch pad. Saving will encrypt via EPA.\n\n")))
+
+(map! :leader
+      :desc "Secure Scratch" "z s" #'my/open-encrypted-scratch)
+#+end_src
+
+* Dashboard Configuration
+Custom ASCII banner and adjust dashboard widgets.
+
+#+begin_src emacs-lisp
+(defun my-custom-dashboard-ascii ()
+  "Insert custom ASCII art into the Doom dashboard."
+(let* ((banner '("  ^~^  ,"
+                 " ('Y') )"
+                 " /   \\/"
+                 "(\\\\|||/) hjw"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (dolist (line banner)
+      (insert (propertize (+doom-dashboard--center longest-line line)
+                          'face 'doom-dashboard-banner) "\n"))))
+
+(setq +doom-dashboard-ascii-colors '("blue" "blue" "blue" "blue"))
+(setq +doom-dashboard-functions '(my-custom-dashboard-ascii
+                                  doom-dashboard-widget-shortmenu
+                                  doom-dashboard-widget-loaded))
+#+end_src
+                                  doom-dashboard-widget-shortmenu
+                                  doom-dashboard-widget-loaded))
+#+end_src
+
+* Custom Functions
+Utility commands for managing the editor state.
+
+#+begin_src emacs-lisp
+(defun my/doom-sync-and-reload ()
+  "Run doom sync asynchronously, then reload Doom configuration."
+  (interactive)
+  (message "Running doom sync...")
+  (set-process-sentinel
+   (start-process "doom-sync" "*doom-sync*" (expand-file-name "bin/doom" doom-emacs-dir) "sync")
+   (lambda (process event)
+     (when (string= event "finished\n")
+       (message "Sync complete. Reloading...")
+       (doom/reload)))))
+
+(map! :leader
+      :desc "Sync and reload Doom"
+      "h R" #'my/doom-sync-and-reload)
+#+end_src
