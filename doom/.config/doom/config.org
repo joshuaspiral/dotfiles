@@ -73,6 +73,10 @@ Configure EasyPG Assistant (EPA) and define keybindings for encryption and decry
 
 
 #+begin_src emacs-lisp
+(require 'epa)
+(setenv "GPG_AGENT_INFO" nil)
+(setq epa-file-encrypt-to '("hi@joshuaspiral.xyz"))
+
 (defun my/open-encrypted-scratch ()
   "Open a temporary buffer that saves as an encrypted GPG file."
   (interactive)
@@ -82,7 +86,12 @@ Configure EasyPG Assistant (EPA) and define keybindings for encryption and decry
     (insert "# Secure scratch pad. Saving will encrypt via EPA.\n\n")))
 
 (map! :leader
-      :desc "Secure Scratch" "z s" #'my/open-encrypted-scratch)
+      :prefix ("z" . "encryption")
+      :desc "Encrypt file"   "f" #'epa-encrypt-file
+      :desc "Decrypt file"   "d" #'epa-decrypt-file
+      :desc "Encrypt region" "r" #'epa-encrypt-region
+      :desc "Decrypt region" "R" #'epa-decrypt-region
+      :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
 #+end_src
 
 * Dashboard Configuration
@@ -91,10 +100,10 @@ Custom ASCII banner and adjust dashboard widgets.
 #+begin_src emacs-lisp
 (defun my-custom-dashboard-ascii ()
   "Insert custom ASCII art into the Doom dashboard."
-(let* ((banner '("  ^~^  ,"
-                 " ('Y') )"
-                 " /   \\/"
-                 "(\\\\|||/) hjw"))
+  (let* ((banner '("  ^~^  ,"
+                   " ('Y') )"
+                   " /   \\/"
+                   "(\\\\|||/) hjw"))
          (longest-line (apply #'max (mapcar #'length banner))))
     (dolist (line banner)
       (insert (propertize (+doom-dashboard--center longest-line line)
@@ -102,9 +111,6 @@ Custom ASCII banner and adjust dashboard widgets.
 
 (setq +doom-dashboard-ascii-colors '("blue" "blue" "blue" "blue"))
 (setq +doom-dashboard-functions '(my-custom-dashboard-ascii
-                                  doom-dashboard-widget-shortmenu
-                                  doom-dashboard-widget-loaded))
-#+end_src
                                   doom-dashboard-widget-shortmenu
                                   doom-dashboard-widget-loaded))
 #+end_src
