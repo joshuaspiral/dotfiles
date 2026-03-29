@@ -61,22 +61,6 @@
       :desc "Decrypt region" "R" #'epa-decrypt-region
       :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
 
-(defun my-custom-dashboard-ascii ()
-  "Insert custom ASCII art into the Doom dashboard."
-  (let* ((banner '("  ^~^  ,"
-                   " ('Y') )"
-                   " /   \\/"
-                   "(\\\\|||/) hjw"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (dolist (line banner)
-      (insert (propertize (+doom-dashboard--center longest-line line)
-                          'face 'doom-dashboard-banner) "\n"))))
-
-(setq +doom-dashboard-ascii-colors '("blue" "blue" "blue" "blue"))
-(setq +doom-dashboard-functions '(my-custom-dashboard-ascii
-                                  doom-dashboard-widget-shortmenu
-                                  doom-dashboard-widget-loaded))
-
 (defun my/doom-sync-and-reload ()
   "Run doom sync asynchronously, then reload Doom configuration."
   (interactive)

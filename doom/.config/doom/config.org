@@ -94,28 +94,6 @@ Configure EasyPG Assistant (EPA) and define keybindings for encryption and decry
       :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
 #+end_src
 
-* Dashboard Configuration
-Custom ASCII banner.
-
-#+begin_src emacs-lisp
-(defun my-custom-dashboard-ascii ()
-  "Insert custom ASCII art into the Doom dashboard."
-  (let* ((banner '("  ^~^  ,"
-                   " ('Y') )"
-                   " /   \\/"
-                   "(\\\\|||/) hjw")))
-    (put-text-property
-     (point)
-     (dolist (line banner (insert "\n"))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (propertize line 'face 'doom-dashboard-banner))
-               "\n"))
-     'read-only t)))
-
-(setq +doom-dashboard-ascii-banner-fn #'my-custom-dashboard-ascii)
-#+end_src
-
 * Custom Functions
 Utility commands for managing the editor state.
 

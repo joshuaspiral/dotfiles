@@ -43,12 +43,14 @@ git
 github-cli
 gitleaks
 gnome-keyring
+graphviz
 grim
 ical2orgpy-git
 imagemagick
 imv
 intel-ucode
 isync
+jdk-openjdk
 jq
 kanshi
 kitty
@@ -84,7 +86,10 @@ progress
 proton-vpn-cli
 pyenv
 pyright
+python-isort
 python-pip
+python-pipenv
+python-pytest
 python313
 qt5-wayland
 qt6-wayland
@@ -92,6 +97,7 @@ resvg
 ripgrep
 rsync
 seahorse
+shellcheck
 signal-desktop
 slurp
 smartmontools
@@ -126,6 +132,7 @@ texlive-pstricks
 texlive-publishers
 texlive-xetex
 throttled
+tidy
 tlp
 tofi
 trash-cli
@@ -133,6 +140,7 @@ tree
 ttf-ibm-plex
 ttf-iosevka-nerd
 ttf-jetbrains-mono-nerd
+ttf-symbola
 udiskie
 unzip
 waybar
