@@ -1,8 +1,10 @@
+(setq eglot-autoshutdown t)
+
 (setq user-full-name "Joshua Yeung"
       user-mail-address "hi@joshuaspiral.xyz")
 
 (setq doom-theme 'doom-gruvbox
-      doom-font (font-spec :family "Geist Mono Nerd Font" :size 18))
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
 
 (setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(alpha-background . 85))
@@ -10,8 +12,10 @@
 (setq vterm-shell (executable-find "fish"))
 
 (setq org-directory "~/org/")
-(setq org-agenda-files (directory-files-recursively "~/org/agenda/" "\\.org$"))
+(setq org-agenda-hide-tags-regexp "RECURRING")
 
+(after! org
+  (plist-put org-format-latex-options :scale 1.5))
 (with-eval-after-load 'org
   (setq org-hide-emphasis-markers t
         org-startup-indented t
@@ -27,6 +31,12 @@
      (shell  . t)
      (latex  . t))))
 
+;; Hugo
+(after! org
+  (require 'ox-hugo))
+
+(put 'org-hugo-auto-export-mode 'safe-local-variable #'booleanp)
+
 (setq +latex-viewers '(zathura))
 
 (with-eval-after-load 'latex
@@ -40,6 +50,8 @@
               (lambda ()
                 (TeX-command-run-all nil))
               nil t)))
+
+(setq-hook! 'latex-mode-hook +format-with 'latexindent)
 
 (require 'epa)
 (setenv "GPG_AGENT_INFO" nil)
@@ -61,17 +73,28 @@
       :desc "Decrypt region" "R" #'epa-decrypt-region
       :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
 
-(defun my/doom-sync-and-reload ()
-  "Run doom sync asynchronously, then reload Doom configuration."
-  (interactive)
-  (message "Running doom sync...")
-  (set-process-sentinel
-   (start-process "doom-sync" "*doom-sync*" (expand-file-name "bin/doom" doom-emacs-dir) "sync")
-   (lambda (process event)
-     (when (string= event "finished\n")
-       (message "Sync complete. Reloading...")
-       (doom/reload)))))
+(with-eval-after-load 'eglot
+  ;; Configure Pyright for strict type checking
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio")))
 
-(map! :leader
-      :desc "Sync and reload Doom"
-      "h R" #'my/doom-sync-and-reload)
+  (setq-default eglot-workspace-configuration
+                '((:python . (:analysis (:typeCheckingMode "strict"
+                                         :autoSearchPaths t
+                                         :useLibraryCodeForTypes t))))))
+(setq eglot-autoshutdown t)
+
+(setq-hook! 'python-mode-hook
+  +format-with 'black
+  +format-with-lsp nil)
+
+(setq-hook! '(latex-mode-hook LaTeX-mode-hook) +format-with 'latexindent)
+
+(after! org
+  (setq org-capture-templates
+        '(("i" "Inbox" entry
+           (file+headline "~/org/inbox.org" "Unsorted Capture")
+           "* %?\n%U\n%i" :prepend t :empty-lines 1)
+          ("t" "Todo" entry
+           (file+headline "~/org/to     dos.org" "Tasks")
+           "* TODO %?\n%U" :prepend t :empty-lines 1))))

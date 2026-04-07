@@ -19,7 +19,7 @@ gaps outer 0
 smart_gaps on
 smart_borders on
 seat * xcursor_theme Adwaita 24
-font pango:GeistMono Nerd Font 12
+font pango:JetBrains Mono Nerd Font 12
 focus_follows_mouse yes
 
 client.focused           #d79921   #282828   #ebdbb2   #8ec07c   #d79921
@@ -50,7 +50,7 @@ exec_always {
     gsettings set $gnome-schema color-scheme 'prefer-dark'
     gsettings set $gnome-schema icon-theme 'Papirus-Dark'
     gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'GeistMono Nerd Font 12'
+    gsettings set $gnome-schema font-name 'Iosevka Nerd Font 12'
 }
 
 # Idle/Lock
@@ -142,7 +142,7 @@ bindsym $mod+period focus output right
 bindsym $mod+Shift+comma move container to output left, focus output left
 bindsym $mod+Shift+period move container to output right, focus output right
 bindsym $mod+t layout tabbed
-# bindsym $mod+Shift+e layout toggle split
+bindsym $mod+Shift+t layout toggle split
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up

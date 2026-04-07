@@ -2,6 +2,11 @@
 #+TITLE: Doom Emacs Configuration
 #+AUTHOR: Joshua Yeung
 
+* Early Init
+#+begin_src emacs-lisp
+(setq eglot-autoshutdown t)
+#+end_src
+
 * Identity
 Set up user identification for GPG, email, and file templates.
 
@@ -13,7 +18,7 @@ Set up user identification for GPG, email, and file templates.
 * Visuals and Theme
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-gruvbox
-      doom-font (font-spec :family "Geist Mono Nerd Font" :size 18))
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
 
 (setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(alpha-background . 85))
@@ -31,8 +36,10 @@ Define directory structures and visual behaviors for Org files.
 
 #+begin_src emacs-lisp
 (setq org-directory "~/org/")
-(setq org-agenda-files (directory-files-recursively "~/org/agenda/" "\\.org$"))
+(setq org-agenda-hide-tags-regexp "RECURRING")
 
+(after! org
+  (plist-put org-format-latex-options :scale 1.5))
 (with-eval-after-load 'org
   (setq org-hide-emphasis-markers t
         org-startup-indented t
@@ -47,6 +54,12 @@ Define directory structures and visual behaviors for Org files.
      (C      . t)
      (shell  . t)
      (latex  . t))))
+
+;; Hugo
+(after! org
+  (require 'ox-hugo))
+
+(put 'org-hugo-auto-export-mode 'safe-local-variable #'booleanp)
 #+end_src
 
 * LaTeX
@@ -66,6 +79,8 @@ Configure Zathura as the viewer and establish auto-compilation on save for $$\La
               (lambda ()
                 (TeX-command-run-all nil))
               nil t)))
+
+(setq-hook! 'latex-mode-hook +format-with 'latexindent)
 #+end_src
 
 * Encryption and GPG
@@ -94,22 +109,39 @@ Configure EasyPG Assistant (EPA) and define keybindings for encryption and decry
       :desc "Secure Scratch" "s" #'my/open-encrypted-scratch)
 #+end_src
 
-* Custom Functions
-Utility commands for managing the editor state.
+* Python IDE Features
+Configure static analysis and auto-formatting.
 
 #+begin_src emacs-lisp
-(defun my/doom-sync-and-reload ()
-  "Run doom sync asynchronously, then reload Doom configuration."
-  (interactive)
-  (message "Running doom sync...")
-  (set-process-sentinel
-   (start-process "doom-sync" "*doom-sync*" (expand-file-name "bin/doom" doom-emacs-dir) "sync")
-   (lambda (process event)
-     (when (string= event "finished\n")
-       (message "Sync complete. Reloading...")
-       (doom/reload)))))
+(with-eval-after-load 'eglot
+  ;; Configure Pyright for strict type checking
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio")))
 
-(map! :leader
-      :desc "Sync and reload Doom"
-      "h R" #'my/doom-sync-and-reload)
+  (setq-default eglot-workspace-configuration
+                '((:python . (:analysis (:typeCheckingMode "strict"
+                                         :autoSearchPaths t
+                                         :useLibraryCodeForTypes t))))))
+(setq eglot-autoshutdown t)
+#+end_src
+
+* Formatting
+#+begin_src emacs-lisp
+(setq-hook! 'python-mode-hook
+  +format-with 'black
+  +format-with-lsp nil)
+
+(setq-hook! '(latex-mode-hook LaTeX-mode-hook) +format-with 'latexindent)
+#+end_src
+
+* Capture Templates
+#+begin_src emacs-lisp
+(after! org
+  (setq org-capture-templates
+        '(("i" "Inbox" entry
+           (file+headline "~/org/inbox.org" "Unsorted Capture")
+           "* %?\n%U\n%i" :prepend t :empty-lines 1)
+          ("t" "Todo" entry
+           (file+headline "~/org/to     dos.org" "Tasks")
+           "* TODO %?\n%U" :prepend t :empty-lines 1))))
 #+end_src
